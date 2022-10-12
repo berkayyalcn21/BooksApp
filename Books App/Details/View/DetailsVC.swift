@@ -35,6 +35,7 @@ class DetailsVC: UIViewController {
         }
         detailsBookName.text = result?.name
         detailsBookAuthor.text = result?.artistName
+        detailsDate.text = result?.releaseDate
     }
     
     @objc func starred() {
