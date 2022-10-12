@@ -10,6 +10,8 @@ import UIKit
 class HomeVC: UIViewController {
 
     @IBOutlet weak var homeCollectionView: UICollectionView!
+    private let collectionViewKey = "HomeCollectionViewCell"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -19,6 +21,11 @@ class HomeVC: UIViewController {
     func setupUI() {
         homeCollectionView.delegate = self
         homeCollectionView.dataSource = self
+        registerCollectionView()
+    }
+    
+    func registerCollectionView() {
+        homeCollectionView.register(.init(nibName: collectionViewKey, bundle: nil), forCellWithReuseIdentifier: collectionViewKey)
     }
 
 
@@ -35,7 +42,7 @@ extension HomeVC: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = UICollectionViewCell()
+        let cell = homeCollectionView.dequeueReusableCell(withReuseIdentifier: collectionViewKey, for: indexPath) as! HomeCollectionViewCell
         return cell
     }
 }
