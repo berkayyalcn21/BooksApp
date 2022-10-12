@@ -7,4 +7,7 @@
 
 import Foundation
 
-
+public protocol BaseModel: Codable {
+    
+    var baseUrl: String {get set}
+}

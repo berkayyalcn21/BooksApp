@@ -21,11 +21,11 @@ protocol PresenterToInteracterHomeProtocol {
 }
 
 protocol InteractorToPresenterHomeProtocol {
-    func dataTransferToPresenter(with books: [Welcome])
+    func dataTransferToPresenter(with books: [Books])
 }
 
 protocol PresenterToViewHomeProtocol {
-    func updateData(with books: [Result])
+    func updateData(with books: [Books])
     func updateError(with error: String)
 }
 

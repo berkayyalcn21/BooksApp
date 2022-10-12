@@ -7,12 +7,11 @@
 
 import Foundation
 
-public protocol BaseModel: Codable {
-    
-    var baseUrl: String {get set}
-}
-
 public struct BookRequestModel: BaseModel {
-    
-    public var baseUrl = "https://rss.applemarketingtools.com/api/v2/us/books/top-free/20/books.json"
+    var paginationTotal: Int
+    public var baseUrl = ""
+    init(paginationTotal: Int) {
+        self.paginationTotal = paginationTotal
+        self.baseUrl = "https://rss.applemarketingtools.com/api/v2/us/books/top-free/\(paginationTotal)/books.json"
+    }
 }

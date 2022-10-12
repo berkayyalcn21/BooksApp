@@ -8,20 +8,18 @@
 import Foundation
 
 protocol NetworkingProtocol {
-    func requestData<T: Decodable>(model: T.Type, request: BaseModel, completion: @escaping ((Result<T, Error>) -> Void))
+    func requestData<T: Decodable>(request: BaseModel, completion: @escaping ((Result<T, Error>) -> Void))
 }
 
 class BookNetwork: NetworkingProtocol {
     
-    func requestData<T>(model: T.Type, request: BaseModel, completion: @escaping ((Result<T, Error>) -> Void)) where T : Decodable {
+    func requestData<T: Decodable>(request: BaseModel, completion: @escaping ((Result<T, Error>) -> Void)) {
         
         guard let url = URL(string: request.baseUrl) else {
             return
         }
         
         let task = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
-            guard let _ = self else {
-                return }
             if error != nil || data == nil {
                 completion(.failure(error!))
                 return

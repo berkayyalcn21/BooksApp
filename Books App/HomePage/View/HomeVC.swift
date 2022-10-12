@@ -13,7 +13,7 @@ class HomeVC: UIViewController {
     @IBOutlet weak var homeActivityIndicator: UIActivityIndicatorView!
     var homePresenterObject: ViewToPresenterHomeProtocol?
     private let collectionViewKey = "HomeCollectionViewCell"
-    private var books: [Result] = []
+    private var books: [Books] = []
     private var paginationTotal = 20
     
     override func viewDidLoad() {
@@ -115,7 +115,7 @@ extension HomeVC: UICollectionViewDelegateFlowLayout {
 
 extension HomeVC: PresenterToViewHomeProtocol {
     
-    func updateData(with books: [Result]) {
+    func updateData(with books: [Books]) {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
             self.books = books

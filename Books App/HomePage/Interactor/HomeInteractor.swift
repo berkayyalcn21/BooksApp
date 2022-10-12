@@ -13,10 +13,13 @@ class HomeInteractor: PresenterToInteracterHomeProtocol {
     var homePresenter: InteractorToPresenterHomeProtocol?
     
     func loadAllBooks(pagination: Int) {
-        BookNetwork().requestData(model: Welcome.self, request: BookRequestModel) { result in
+        let baseRequestModel = BookRequestModel(paginationTotal: pagination)
+        BookNetwork().requestData(request: baseRequestModel) { (result: Result<Welcome, Error>) in
             switch result {
             case .success(let success):
-                self.homePresenter?.dataTransferToPresenter(with: [success])
+                if let books = success.feed?.results {
+                    self.homePresenter?.dataTransferToPresenter(with: books)
+                }
             case .failure(_):
                 break
             }
