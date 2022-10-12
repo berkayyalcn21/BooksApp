@@ -22,7 +22,7 @@ struct Feed: Codable {
     let copyright, country: String?
     let icon: String?
     let updated: String?
-    let results: [Result]?
+    let results: [Books]?
 }
 
 // MARK: - Author
@@ -41,7 +41,7 @@ struct Link: Codable {
 }
 
 // MARK: - Result
-struct Result: Codable {
+struct Books: Codable {
     let artistName, id, name, releaseDate: String?
     let kind: String?
     let artistID: String?
