@@ -15,15 +15,11 @@ class HomeVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(addTapped))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "line.3.horizontal.decrease.circle"), style: .done, target: self, action: #selector(addTapped))
         self.title = "Home"
         setupUI()
     }
-    
-    @objc func addTapped() {
-        
-    }
-    
+
     func setupUI() {
         homeCollectionView.delegate = self
         homeCollectionView.dataSource = self
@@ -32,6 +28,15 @@ class HomeVC: UIViewController {
     
     func registerCollectionView() {
         homeCollectionView.register(.init(nibName: collectionViewKey, bundle: nil), forCellWithReuseIdentifier: collectionViewKey)
+    }
+    
+    @objc func addTapped() {
+        
+    }
+    
+    func actionSheetForFilter() {
+        
+        
     }
 
 
@@ -70,7 +75,4 @@ extension HomeVC: UICollectionViewDelegateFlowLayout {
     }
 }
 
-extension HomeVC: UIActionSheetDelegate {
- 
-}
 

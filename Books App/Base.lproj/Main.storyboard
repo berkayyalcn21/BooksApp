@@ -45,11 +45,11 @@
             </objects>
             <point key="canvasLocation" x="5623.0769230769229" y="-28.436018957345969"/>
         </scene>
-        <!--Item-->
+        <!--Navigation Controller-->
         <scene sceneID="bbU-X9-0fj">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="X4y-gM-doM" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="DtC-VB-foN"/>
+                    <tabBarItem key="tabBarItem" title="" image="homekit" catalog="system" id="DtC-VB-foN"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="2E6-xB-EkZ">
                         <rect key="frame" x="0.0" y="47" width="390" height="44"/>
@@ -82,4 +82,7 @@
             <point key="canvasLocation" x="3764.6153846153843" y="-28.436018957345969"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="homekit" catalog="system" width="128" height="104"/>
+    </resources>
 </document>
