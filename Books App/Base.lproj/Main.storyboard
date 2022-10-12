@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="AZp-Px-MJC">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -52,22 +53,60 @@
             </objects>
             <point key="canvasLocation" x="5597" y="-28"/>
         </scene>
-        <!--Item-->
+        <!--SearchVC-->
         <scene sceneID="hcc-lV-LR2">
             <objects>
                 <viewController id="7BE-J6-4Tu" customClass="SearchVC" customModule="Books_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vor-pn-fzW">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HnI-Yi-djE">
+                                <rect key="frame" x="0.0" y="91" width="390" height="46"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Bir şeyler ara..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mAc-hd-fOv">
+                                        <rect key="frame" x="8" y="4" width="334" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="magnifyingglass" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="UBK-2D-BcH">
+                                        <rect key="frame" x="350" y="3" width="36" height="34"/>
+                                        <color key="tintColor" red="0.6705882353" green="0.67000001669999998" blue="0.67000001669999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="36" id="4KA-Wu-hWx"/>
+                                            <constraint firstAttribute="height" constant="35.670000000000002" id="fod-8g-ltf"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="UBK-2D-BcH" firstAttribute="leading" secondItem="mAc-hd-fOv" secondAttribute="trailing" constant="8" symbolic="YES" id="6KC-op-39G"/>
+                                    <constraint firstItem="UBK-2D-BcH" firstAttribute="top" secondItem="HnI-Yi-djE" secondAttribute="top" constant="2" id="7u2-f5-HtQ"/>
+                                    <constraint firstItem="mAc-hd-fOv" firstAttribute="top" secondItem="HnI-Yi-djE" secondAttribute="top" constant="4" id="DN3-it-E2y"/>
+                                    <constraint firstAttribute="trailing" secondItem="UBK-2D-BcH" secondAttribute="trailing" constant="4" id="PIT-U7-srs"/>
+                                    <constraint firstAttribute="bottom" secondItem="mAc-hd-fOv" secondAttribute="bottom" constant="8" id="Zcl-Tv-oyf"/>
+                                    <constraint firstItem="mAc-hd-fOv" firstAttribute="leading" secondItem="HnI-Yi-djE" secondAttribute="leading" constant="8" id="z8J-1f-qjf"/>
+                                </constraints>
+                            </view>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tGF-xI-lW9">
+                                <rect key="frame" x="0.0" y="130" width="190" height="45"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            </pickerView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="I9g-a1-eTv"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="HnI-Yi-djE" firstAttribute="top" secondItem="I9g-a1-eTv" secondAttribute="top" id="PR1-eV-azy"/>
+                            <constraint firstItem="HnI-Yi-djE" firstAttribute="leading" secondItem="I9g-a1-eTv" secondAttribute="leading" id="ibn-56-6Fb"/>
+                            <constraint firstItem="HnI-Yi-djE" firstAttribute="trailing" secondItem="I9g-a1-eTv" secondAttribute="trailing" id="qoo-vJ-9KZ"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="wis-Np-4T7"/>
+                    <tabBarItem key="tabBarItem" title="" image="magnifyingglass" catalog="system" id="wis-Np-4T7"/>
                     <navigationItem key="navigationItem" id="clw-2b-Vse"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dk7-US-BOZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5597" y="669"/>
+            <point key="canvasLocation" x="5596.9230769230771" y="668.957345971564"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="bbU-X9-0fj">
@@ -107,11 +146,11 @@
             </objects>
             <point key="canvasLocation" x="3764.6153846153843" y="-28.436018957345969"/>
         </scene>
-        <!--Item-->
+        <!--Search-->
         <scene sceneID="ol9-Wl-zna">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="t8i-I3-CBk" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="hjP-aG-CZ1"/>
+                    <tabBarItem key="tabBarItem" title="Search" image="magnifyingglass" catalog="system" id="hjP-aG-CZ1"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="dwY-4J-eYj">
                         <rect key="frame" x="0.0" y="47" width="390" height="44"/>
@@ -129,6 +168,7 @@
     </scenes>
     <resources>
         <image name="homekit" catalog="system" width="128" height="104"/>
+        <image name="magnifyingglass" catalog="system" width="128" height="117"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
