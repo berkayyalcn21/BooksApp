@@ -11,6 +11,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var bookImageView: UIImageView!
     @IBOutlet weak var bookTitle: UILabel!
+    @IBOutlet weak var cellActivityIndicator: UIActivityIndicatorView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

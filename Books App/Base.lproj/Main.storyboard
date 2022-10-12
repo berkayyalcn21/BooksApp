@@ -26,6 +26,9 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                             </collectionView>
+                            <activityIndicatorView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="Kiz-S4-MrK">
+                                <rect key="frame" x="176.66666666666666" y="403.66666666666669" width="37" height="37"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.96862745289999996" green="0.96862745289999996" blue="0.97254908080000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -33,11 +36,14 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="L7w-uL-GDQ" secondAttribute="bottom" id="THF-5H-VyU"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="L7w-uL-GDQ" secondAttribute="trailing" id="WnR-CP-hS8"/>
                             <constraint firstItem="L7w-uL-GDQ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="aYq-AH-HHh"/>
+                            <constraint firstItem="Kiz-S4-MrK" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="lHG-u4-FTx"/>
                             <constraint firstItem="L7w-uL-GDQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ly1-Ac-FcS"/>
+                            <constraint firstItem="Kiz-S4-MrK" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="shi-fy-nZJ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Dyz-sn-Yw6"/>
                     <connections>
+                        <outlet property="homeActivityIndicator" destination="Kiz-S4-MrK" id="raa-XS-2Nz"/>
                         <outlet property="homeCollectionView" destination="L7w-uL-GDQ" id="Dy0-c7-Zgb"/>
                     </connections>
                 </viewController>
@@ -70,6 +76,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="AZp-Px-MJC" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="1xV-s6-t5J">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>

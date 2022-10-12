@@ -10,6 +10,7 @@ import UIKit
 class HomeVC: UIViewController {
 
     @IBOutlet weak var homeCollectionView: UICollectionView!
+    @IBOutlet weak var homeActivityIndicator: UIActivityIndicatorView!
     var homePresenterObject: ViewToPresenterHomeProtocol?
     private let collectionViewKey = "HomeCollectionViewCell"
     private var books: [Result] = []
@@ -38,12 +39,17 @@ class HomeVC: UIViewController {
     }
     
     @objc func addTapped() {
-        
+        actionSheetForFilter()
     }
     
     func actionSheetForFilter() {
-        
-        
+        let actionSheet = UIAlertController(title: "Sırala", message: nil, preferredStyle: .actionSheet)
+        actionSheet.addAction(UIAlertAction(title: "Tümü", style: .default))
+        actionSheet.addAction(UIAlertAction(title: "Yeniden eskiye", style: .default))
+        actionSheet.addAction(UIAlertAction(title: "Eskiden yeniye", style: .default))
+        actionSheet.addAction(UIAlertAction(title: "Sadece beğenilenler", style: .default))
+        actionSheet.addAction(UIAlertAction(title: "Vazgeç", style: .cancel))
+        present(actionSheet, animated: true)
     }
 }
 
@@ -58,6 +64,7 @@ extension HomeVC: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        homeActivityIndicator.stopAnimating()
         let cellModel = books[indexPath.row]
         let cell = homeCollectionView.dequeueReusableCell(withReuseIdentifier: collectionViewKey, for: indexPath) as! HomeCollectionViewCell
         cell.layer.cornerRadius = 10
@@ -65,6 +72,7 @@ extension HomeVC: UICollectionViewDataSource {
             let data = try! Data(contentsOf: URL(string: cellModel.artworkUrl100!)!)
             DispatchQueue.main.async { [weak self] in
                 cell.bookImageView.image = UIImage(data: data)
+                cell.cellActivityIndicator.stopAnimating()
             }
         }
         cell.bookTitle.text = cellModel.name
