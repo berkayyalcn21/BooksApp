@@ -20,6 +20,12 @@
 		F05D8D7028F699ED00EB491B /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05D8D6E28F699ED00EB491B /* HomeCollectionViewCell.swift */; };
 		F05D8D7128F699ED00EB491B /* HomeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F05D8D6F28F699ED00EB491B /* HomeCollectionViewCell.xib */; };
 		F07980B328F6B7DE00440FA2 /* HomeProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07980B228F6B7DE00440FA2 /* HomeProtocols.swift */; };
+		F0D250FB28F700DF0049CF73 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D250FA28F700DF0049CF73 /* SearchVC.swift */; };
+		F0D250FD28F701020049CF73 /* SearchInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D250FC28F701020049CF73 /* SearchInteractor.swift */; };
+		F0D250FF28F7010D0049CF73 /* SearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D250FE28F7010D0049CF73 /* SearchPresenter.swift */; };
+		F0D2510128F701160049CF73 /* SearchEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D2510028F701160049CF73 /* SearchEntity.swift */; };
+		F0D2510328F7011E0049CF73 /* SearchRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D2510228F7011E0049CF73 /* SearchRouter.swift */; };
+		F0D2510528F701260049CF73 /* SearchProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D2510428F701260049CF73 /* SearchProtocols.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +44,12 @@
 		F05D8D6E28F699ED00EB491B /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		F05D8D6F28F699ED00EB491B /* HomeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeCollectionViewCell.xib; sourceTree = "<group>"; };
 		F07980B228F6B7DE00440FA2 /* HomeProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeProtocols.swift; sourceTree = "<group>"; };
+		F0D250FA28F700DF0049CF73 /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
+		F0D250FC28F701020049CF73 /* SearchInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchInteractor.swift; sourceTree = "<group>"; };
+		F0D250FE28F7010D0049CF73 /* SearchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPresenter.swift; sourceTree = "<group>"; };
+		F0D2510028F701160049CF73 /* SearchEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEntity.swift; sourceTree = "<group>"; };
+		F0D2510228F7011E0049CF73 /* SearchRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRouter.swift; sourceTree = "<group>"; };
+		F0D2510428F701260049CF73 /* SearchProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchProtocols.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +82,7 @@
 		F029176628F68CA8008B7659 /* Books App */ = {
 			isa = PBXGroup;
 			children = (
+				F0D250F328F700900049CF73 /* Search */,
 				F05D8D6028F696FD00EB491B /* HomePage */,
 				F029176728F68CA8008B7659 /* AppDelegate.swift */,
 				F029176928F68CA8008B7659 /* SceneDelegate.swift */,
@@ -140,6 +153,67 @@
 			isa = PBXGroup;
 			children = (
 				F07980B228F6B7DE00440FA2 /* HomeProtocols.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		F0D250F328F700900049CF73 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				F0D250F928F700AF0049CF73 /* Protocols */,
+				F0D250F828F700A90049CF73 /* Router */,
+				F0D250F728F700A50049CF73 /* Entity */,
+				F0D250F628F700A00049CF73 /* Presenter */,
+				F0D250F528F7009A0049CF73 /* Interactor */,
+				F0D250F428F700960049CF73 /* View */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		F0D250F428F700960049CF73 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F0D250FA28F700DF0049CF73 /* SearchVC.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F0D250F528F7009A0049CF73 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				F0D250FC28F701020049CF73 /* SearchInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		F0D250F628F700A00049CF73 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				F0D250FE28F7010D0049CF73 /* SearchPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		F0D250F728F700A50049CF73 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				F0D2510028F701160049CF73 /* SearchEntity.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		F0D250F828F700A90049CF73 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				F0D2510228F7011E0049CF73 /* SearchRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		F0D250F928F700AF0049CF73 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				F0D2510428F701260049CF73 /* SearchProtocols.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -217,11 +291,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				F029176C28F68CA8008B7659 /* HomeVC.swift in Sources */,
+				F0D2510128F701160049CF73 /* SearchEntity.swift in Sources */,
 				F05D8D6B28F699A100EB491B /* HomeEntity.swift in Sources */,
+				F0D250FF28F7010D0049CF73 /* SearchPresenter.swift in Sources */,
 				F05D8D6D28F699AB00EB491B /* HomeRouter.swift in Sources */,
 				F029176828F68CA8008B7659 /* AppDelegate.swift in Sources */,
+				F0D2510528F701260049CF73 /* SearchProtocols.swift in Sources */,
 				F07980B328F6B7DE00440FA2 /* HomeProtocols.swift in Sources */,
 				F029176A28F68CA8008B7659 /* SceneDelegate.swift in Sources */,
+				F0D250FB28F700DF0049CF73 /* SearchVC.swift in Sources */,
+				F0D250FD28F701020049CF73 /* SearchInteractor.swift in Sources */,
+				F0D2510328F7011E0049CF73 /* SearchRouter.swift in Sources */,
 				F05D8D6928F6999600EB491B /* HomePresenter.swift in Sources */,
 				F05D8D6728F6998D00EB491B /* HomeInteractor.swift in Sources */,
 				F05D8D7028F699ED00EB491B /* HomeCollectionViewCell.swift in Sources */,
@@ -380,6 +460,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -409,6 +490,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
