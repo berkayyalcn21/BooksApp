@@ -19,6 +19,7 @@
 		F05D8D6D28F699AB00EB491B /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05D8D6C28F699AB00EB491B /* HomeRouter.swift */; };
 		F05D8D7028F699ED00EB491B /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05D8D6E28F699ED00EB491B /* HomeCollectionViewCell.swift */; };
 		F05D8D7128F699ED00EB491B /* HomeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F05D8D6F28F699ED00EB491B /* HomeCollectionViewCell.xib */; };
+		F07980B328F6B7DE00440FA2 /* HomeProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07980B228F6B7DE00440FA2 /* HomeProtocols.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		F05D8D6C28F699AB00EB491B /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
 		F05D8D6E28F699ED00EB491B /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		F05D8D6F28F699ED00EB491B /* HomeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeCollectionViewCell.xib; sourceTree = "<group>"; };
+		F07980B228F6B7DE00440FA2 /* HomeProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeProtocols.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 		F05D8D6028F696FD00EB491B /* HomePage */ = {
 			isa = PBXGroup;
 			children = (
+				F07980B428F6B7E400440FA2 /* Protocols */,
 				F05D8D6528F6996B00EB491B /* Router */,
 				F05D8D6428F6996500EB491B /* Entity */,
 				F05D8D6328F6995E00EB491B /* Presenter */,
@@ -131,6 +134,14 @@
 				F05D8D6C28F699AB00EB491B /* HomeRouter.swift */,
 			);
 			path = Router;
+			sourceTree = "<group>";
+		};
+		F07980B428F6B7E400440FA2 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				F07980B228F6B7DE00440FA2 /* HomeProtocols.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -209,6 +220,7 @@
 				F05D8D6B28F699A100EB491B /* HomeEntity.swift in Sources */,
 				F05D8D6D28F699AB00EB491B /* HomeRouter.swift in Sources */,
 				F029176828F68CA8008B7659 /* AppDelegate.swift in Sources */,
+				F07980B328F6B7DE00440FA2 /* HomeProtocols.swift in Sources */,
 				F029176A28F68CA8008B7659 /* SceneDelegate.swift in Sources */,
 				F05D8D6928F6999600EB491B /* HomePresenter.swift in Sources */,
 				F05D8D6728F6998D00EB491B /* HomeInteractor.swift in Sources */,

@@ -1,5 +1,5 @@
 //
-//  HomeRouter.swift
+//  HomeProtocols.swift
 //  Books App
 //
 //  Created by Berkay on 12.10.2022.
@@ -7,7 +7,5 @@
 
 import Foundation
 
+// Main Protocols
 
-class HomeRouter {
-    
-}
