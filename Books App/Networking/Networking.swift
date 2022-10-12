@@ -19,7 +19,7 @@ class BookNetwork: NetworkingProtocol {
             return
         }
         
-        let task = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
             if error != nil || data == nil {
                 completion(.failure(error!))
                 return

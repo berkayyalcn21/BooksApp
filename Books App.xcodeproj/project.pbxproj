@@ -43,6 +43,7 @@
 		F0D2513428F7615F0049CF73 /* BooksDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F0D2513228F7615F0049CF73 /* BooksDataModel.xcdatamodeld */; };
 		F0D2513728F763EE0049CF73 /* FavoritesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D2513528F763EE0049CF73 /* FavoritesCollectionViewCell.swift */; };
 		F0D2513828F763EE0049CF73 /* FavoritesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0D2513628F763EE0049CF73 /* FavoritesCollectionViewCell.xib */; };
+		F0D2513B28F767830049CF73 /* FavoritesProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D2513A28F767830049CF73 /* FavoritesProtocols.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,6 +85,7 @@
 		F0D2513328F7615F0049CF73 /* BooksDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BooksDataModel.xcdatamodel; sourceTree = "<group>"; };
 		F0D2513528F763EE0049CF73 /* FavoritesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCollectionViewCell.swift; sourceTree = "<group>"; };
 		F0D2513628F763EE0049CF73 /* FavoritesCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoritesCollectionViewCell.xib; sourceTree = "<group>"; };
+		F0D2513A28F767830049CF73 /* FavoritesProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesProtocols.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -337,6 +339,7 @@
 		F0D2512128F75E100049CF73 /* Favorites */ = {
 			isa = PBXGroup;
 			children = (
+				F0D2513928F767740049CF73 /* Protocols */,
 				F0D2512F28F7610A0049CF73 /* CoreData */,
 				F0D2512628F75EE70049CF73 /* Router */,
 				F0D2512528F75E760049CF73 /* Entity */,
@@ -395,6 +398,14 @@
 				F0D2513228F7615F0049CF73 /* BooksDataModel.xcdatamodeld */,
 			);
 			path = CoreData;
+			sourceTree = "<group>";
+		};
+		F0D2513928F767740049CF73 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				F0D2513A28F767830049CF73 /* FavoritesProtocols.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -481,6 +492,7 @@
 				F0D2511028F7116D0049CF73 /* DetailsInteractor.swift in Sources */,
 				F05D8D6D28F699AB00EB491B /* HomeRouter.swift in Sources */,
 				F0D2512E28F75F500049CF73 /* FavoritesRouter.swift in Sources */,
+				F0D2513B28F767830049CF73 /* FavoritesProtocols.swift in Sources */,
 				F029176828F68CA8008B7659 /* AppDelegate.swift in Sources */,
 				F0D2510528F701260049CF73 /* SearchProtocols.swift in Sources */,
 				F07980B328F6B7DE00440FA2 /* HomeProtocols.swift in Sources */,
