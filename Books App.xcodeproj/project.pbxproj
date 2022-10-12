@@ -26,6 +26,12 @@
 		F0D2510128F701160049CF73 /* SearchEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D2510028F701160049CF73 /* SearchEntity.swift */; };
 		F0D2510328F7011E0049CF73 /* SearchRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D2510228F7011E0049CF73 /* SearchRouter.swift */; };
 		F0D2510528F701260049CF73 /* SearchProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D2510428F701260049CF73 /* SearchProtocols.swift */; };
+		F0D2510E28F7115D0049CF73 /* DetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D2510D28F7115D0049CF73 /* DetailsVC.swift */; };
+		F0D2511028F7116D0049CF73 /* DetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D2510F28F7116D0049CF73 /* DetailsInteractor.swift */; };
+		F0D2511228F711760049CF73 /* DetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D2511128F711760049CF73 /* DetailsPresenter.swift */; };
+		F0D2511428F711810049CF73 /* DetailsEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D2511328F711810049CF73 /* DetailsEntity.swift */; };
+		F0D2511628F7118A0049CF73 /* DetailsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D2511528F7118A0049CF73 /* DetailsRouter.swift */; };
+		F0D2511828F711940049CF73 /* DetailsProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D2511728F711940049CF73 /* DetailsProtocols.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +56,12 @@
 		F0D2510028F701160049CF73 /* SearchEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEntity.swift; sourceTree = "<group>"; };
 		F0D2510228F7011E0049CF73 /* SearchRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRouter.swift; sourceTree = "<group>"; };
 		F0D2510428F701260049CF73 /* SearchProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchProtocols.swift; sourceTree = "<group>"; };
+		F0D2510D28F7115D0049CF73 /* DetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsVC.swift; sourceTree = "<group>"; };
+		F0D2510F28F7116D0049CF73 /* DetailsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsInteractor.swift; sourceTree = "<group>"; };
+		F0D2511128F711760049CF73 /* DetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsPresenter.swift; sourceTree = "<group>"; };
+		F0D2511328F711810049CF73 /* DetailsEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsEntity.swift; sourceTree = "<group>"; };
+		F0D2511528F7118A0049CF73 /* DetailsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsRouter.swift; sourceTree = "<group>"; };
+		F0D2511728F711940049CF73 /* DetailsProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsProtocols.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +94,7 @@
 		F029176628F68CA8008B7659 /* Books App */ = {
 			isa = PBXGroup;
 			children = (
+				F0D2510628F7112A0049CF73 /* Details */,
 				F0D250F328F700900049CF73 /* Search */,
 				F05D8D6028F696FD00EB491B /* HomePage */,
 				F029176728F68CA8008B7659 /* AppDelegate.swift */,
@@ -218,6 +231,67 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
+		F0D2510628F7112A0049CF73 /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				F0D2510C28F7114A0049CF73 /* Protocols */,
+				F0D2510B28F711450049CF73 /* Router */,
+				F0D2510A28F711410049CF73 /* Entity */,
+				F0D2510928F7113B0049CF73 /* Presenter */,
+				F0D2510828F711360049CF73 /* Interactor */,
+				F0D2510728F711320049CF73 /* View */,
+			);
+			path = Details;
+			sourceTree = "<group>";
+		};
+		F0D2510728F711320049CF73 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F0D2510D28F7115D0049CF73 /* DetailsVC.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F0D2510828F711360049CF73 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				F0D2510F28F7116D0049CF73 /* DetailsInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		F0D2510928F7113B0049CF73 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				F0D2511128F711760049CF73 /* DetailsPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		F0D2510A28F711410049CF73 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				F0D2511328F711810049CF73 /* DetailsEntity.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		F0D2510B28F711450049CF73 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				F0D2511528F7118A0049CF73 /* DetailsRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		F0D2510C28F7114A0049CF73 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				F0D2511728F711940049CF73 /* DetailsProtocols.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -294,17 +368,23 @@
 				F0D2510128F701160049CF73 /* SearchEntity.swift in Sources */,
 				F05D8D6B28F699A100EB491B /* HomeEntity.swift in Sources */,
 				F0D250FF28F7010D0049CF73 /* SearchPresenter.swift in Sources */,
+				F0D2511028F7116D0049CF73 /* DetailsInteractor.swift in Sources */,
 				F05D8D6D28F699AB00EB491B /* HomeRouter.swift in Sources */,
 				F029176828F68CA8008B7659 /* AppDelegate.swift in Sources */,
 				F0D2510528F701260049CF73 /* SearchProtocols.swift in Sources */,
 				F07980B328F6B7DE00440FA2 /* HomeProtocols.swift in Sources */,
 				F029176A28F68CA8008B7659 /* SceneDelegate.swift in Sources */,
+				F0D2510E28F7115D0049CF73 /* DetailsVC.swift in Sources */,
 				F0D250FB28F700DF0049CF73 /* SearchVC.swift in Sources */,
 				F0D250FD28F701020049CF73 /* SearchInteractor.swift in Sources */,
+				F0D2511828F711940049CF73 /* DetailsProtocols.swift in Sources */,
+				F0D2511628F7118A0049CF73 /* DetailsRouter.swift in Sources */,
 				F0D2510328F7011E0049CF73 /* SearchRouter.swift in Sources */,
+				F0D2511428F711810049CF73 /* DetailsEntity.swift in Sources */,
 				F05D8D6928F6999600EB491B /* HomePresenter.swift in Sources */,
 				F05D8D6728F6998D00EB491B /* HomeInteractor.swift in Sources */,
 				F05D8D7028F699ED00EB491B /* HomeCollectionViewCell.swift in Sources */,
+				F0D2511228F711760049CF73 /* DetailsPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
