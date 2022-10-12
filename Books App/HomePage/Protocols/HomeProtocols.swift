@@ -11,13 +11,13 @@ protocol ViewToPresenterHomeProtocol {
     var homeInteractor: PresenterToInteracterHomeProtocol? { get set }
     var homeView: PresenterToViewHomeProtocol? { get set }
     
-    func loadBooks()
+    func loadBooks(pagination: Int)
 }
 
 protocol PresenterToInteracterHomeProtocol {
     var homePresenter: InteractorToPresenterHomeProtocol? { get set }
     
-    func loadAllBooks()
+    func loadAllBooks(pagination: Int)
 }
 
 protocol InteractorToPresenterHomeProtocol {

@@ -12,9 +12,9 @@ class HomeInteractor: PresenterToInteracterHomeProtocol {
     
     var homePresenter: InteractorToPresenterHomeProtocol?
     
-    func loadAllBooks() {
+    func loadAllBooks(pagination: Int) {
         // GET
-        guard let url = URL(string: "https://rss.applemarketingtools.com/api/v2/us/books/top-free/100/books.json") else {
+        guard let url = URL(string: "https://rss.applemarketingtools.com/api/v2/us/books/top-free/\(pagination)/books.json") else {
             return
         }
         

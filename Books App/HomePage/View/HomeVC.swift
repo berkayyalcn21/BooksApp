@@ -14,6 +14,7 @@ class HomeVC: UIViewController {
     var homePresenterObject: ViewToPresenterHomeProtocol?
     private let collectionViewKey = "HomeCollectionViewCell"
     private var books: [Result] = []
+    private var paginationTotal = 20
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +26,7 @@ class HomeVC: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        homePresenterObject?.loadBooks()
+        homePresenterObject?.loadBooks(pagination: paginationTotal)
     }
 
     func setupUI() {
@@ -77,6 +78,15 @@ extension HomeVC: UICollectionViewDataSource {
         }
         cell.bookTitle.text = cellModel.name
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        print(indexPath.row)
+        if indexPath.row + 1 == paginationTotal {
+            paginationTotal += 20
+            homePresenterObject?.loadBooks(pagination: paginationTotal)
+            homeCollectionView.reloadData()
+        }
     }
 }
 

@@ -17,8 +17,8 @@ class HomePresenter: ViewToPresenterHomeProtocol {
     var homeInteractor: PresenterToInteracterHomeProtocol?
     var homeView: PresenterToViewHomeProtocol?
     
-    func loadBooks() {
-        homeInteractor?.loadAllBooks()
+    func loadBooks(pagination: Int) {
+        homeInteractor?.loadAllBooks(pagination: pagination)
     }
 }
 
