@@ -72,9 +72,15 @@ extension HomeVC: UICollectionViewDataSource {
         DispatchQueue.global().async { [weak self] in
             let data = try! Data(contentsOf: URL(string: cellModel.artworkUrl100!)!)
             DispatchQueue.main.async { [weak self] in
+                guard let _ = self else { return }
                 cell.bookImageView.image = UIImage(data: data)
                 cell.cellActivityIndicator.stopAnimating()
             }
+        }
+        cell.row = indexPath.row
+        cell.onTappedButton = { [weak self] index in
+            guard let _ = self else { return }
+            
         }
         cell.bookTitle.text = cellModel.name
         return cell
