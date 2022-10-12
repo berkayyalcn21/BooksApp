@@ -49,6 +49,8 @@ extension HomeVC: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = homeCollectionView.dequeueReusableCell(withReuseIdentifier: collectionViewKey, for: indexPath) as! HomeCollectionViewCell
+        cell.layer.cornerRadius = 10
+        cell.bookTitle.text = "Kırlangıç Çığlığı"
         return cell
     }
 }

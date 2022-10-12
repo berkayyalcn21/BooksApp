@@ -16,7 +16,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="180" height="235"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Kd7-M9-nek">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Kd7-M9-nek">
                         <rect key="frame" x="0.0" y="1.6666666666666572" width="180" height="196"/>
                         <color key="backgroundColor" red="1" green="0.2784313725" blue="0.37647058820000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -25,7 +25,7 @@
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KWM-YW-oun">
                         <rect key="frame" x="10" y="208" width="160" height="18"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -42,6 +42,10 @@
                 <constraint firstItem="KWM-YW-oun" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="miE-AR-O4z"/>
             </constraints>
             <size key="customSize" width="192" height="268"/>
+            <connections>
+                <outlet property="bookImageView" destination="Kd7-M9-nek" id="j5l-HG-0ab"/>
+                <outlet property="bookTitle" destination="KWM-YW-oun" id="IfE-yl-j1H"/>
+            </connections>
             <point key="canvasLocation" x="155.38461538461539" y="65.758293838862556"/>
         </collectionViewCell>
     </objects>
