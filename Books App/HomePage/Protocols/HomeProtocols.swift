@@ -21,7 +21,7 @@ protocol PresenterToInteracterHomeProtocol {
 }
 
 protocol InteractorToPresenterHomeProtocol {
-    func dataTransferToPresenter(_ bookList: Swift.Result<[Result], Error>)
+    func dataTransferToPresenter(with books: [Welcome])
 }
 
 protocol PresenterToViewHomeProtocol {

@@ -24,12 +24,7 @@ class HomePresenter: ViewToPresenterHomeProtocol {
 
 extension HomePresenter: InteractorToPresenterHomeProtocol {
     
-    func dataTransferToPresenter(_ bookList: Swift.Result<[Result], Error>) {
-        switch bookList {
-        case.success(let books):
-            homeView?.updateData(with: books)
-        case.failure(_):
-            homeView?.updateError(with: "Try again...")
-        }
+    func dataTransferToPresenter(with books: [Welcome]) {
+        print(books)
     }
 }
