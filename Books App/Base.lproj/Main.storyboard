@@ -114,10 +114,32 @@
                     <view key="view" contentMode="scaleToFill" id="g43-qt-nwU">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="d68-4A-m4F">
+                                <rect key="frame" x="0.0" y="91" width="390" height="670"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="tWF-cf-c8X">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="46D-8Q-zCS"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="46D-8Q-zCS" firstAttribute="bottom" secondItem="d68-4A-m4F" secondAttribute="bottom" id="1Xr-ZZ-uyb"/>
+                            <constraint firstItem="46D-8Q-zCS" firstAttribute="trailing" secondItem="d68-4A-m4F" secondAttribute="trailing" id="4Is-w6-5r3"/>
+                            <constraint firstItem="d68-4A-m4F" firstAttribute="top" secondItem="46D-8Q-zCS" secondAttribute="top" id="pNi-sj-IWz"/>
+                            <constraint firstItem="d68-4A-m4F" firstAttribute="leading" secondItem="46D-8Q-zCS" secondAttribute="leading" id="zIF-17-buS"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="1O5-fU-qod"/>
+                    <connections>
+                        <outlet property="favoritesCollectionView" destination="d68-4A-m4F" id="Fz5-pG-ipx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gUk-5i-juO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
