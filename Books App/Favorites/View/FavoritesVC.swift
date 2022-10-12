@@ -10,11 +10,13 @@ import UIKit
 class FavoritesVC: UIViewController {
 
     @IBOutlet weak var favoritesCollectionView: UICollectionView!
+    private let collectionViewKey = "FavoritesCollectionViewCell"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.title = "Favoriler"
+        setupUI()
     }
     
     func setupUI() {
@@ -24,7 +26,7 @@ class FavoritesVC: UIViewController {
     }
     
     func registerCollectionView() {
-        
+        favoritesCollectionView.register(.init(nibName: collectionViewKey, bundle: nil), forCellWithReuseIdentifier: collectionViewKey)
     }
 }
 
@@ -39,7 +41,10 @@ extension FavoritesVC: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return UICollectionViewCell()
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: collectionViewKey, for: indexPath) as! FavoritesCollectionViewCell
+//        cell.favoritesActivityIndicator.stopAnimating()
+        cell.favoritesTitle.text = "Kitap Adı"
+        return cell
     }
 }
 
