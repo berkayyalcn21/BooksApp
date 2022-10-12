@@ -23,9 +23,6 @@ class HomeVC: UIViewController {
         self.title = "Home"
         setupUI()
         HomeRouter.createModule(ref: self)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
         homePresenterObject?.loadBooks(pagination: paginationTotal)
     }
 
