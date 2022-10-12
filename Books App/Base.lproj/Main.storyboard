@@ -39,6 +39,9 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="WY1-b0-18d"/>
                     <navigationItem key="navigationItem" id="Dyz-sn-Yw6"/>
+                    <connections>
+                        <outlet property="homeCollectionView" destination="L7w-uL-GDQ" id="Dy0-c7-Zgb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -51,6 +54,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="mny-MH-ABQ"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="fyp-6M-nEA">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
