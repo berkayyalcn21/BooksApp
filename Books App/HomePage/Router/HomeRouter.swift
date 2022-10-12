@@ -8,6 +8,9 @@
 import Foundation
 
 
-class HomeRouter {
+class HomeRouter: HomeRouterProtocol {
     
+    static func startExecution(ref: HomeVC) {
+        
+    }
 }
