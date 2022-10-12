@@ -13,7 +13,7 @@ class DetailsVC: UIViewController {
     @IBOutlet weak var detailsBookName: UILabel!
     @IBOutlet weak var detailsBookAuthor: UILabel!
     @IBOutlet weak var detailsDate: UILabel!
-    var result: Result?
+    var result: Books?
 
     override func viewDidLoad() {
         super.viewDidLoad()

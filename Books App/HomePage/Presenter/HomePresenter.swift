@@ -24,7 +24,7 @@ class HomePresenter: ViewToPresenterHomeProtocol {
 
 extension HomePresenter: InteractorToPresenterHomeProtocol {
     
-    func dataTransferToPresenter(with books: [Welcome]) {
-        print(books)
+    func dataTransferToPresenter(with books: [Books]) {
+        self.homeView?.updateData(with: books)
     }
 }
