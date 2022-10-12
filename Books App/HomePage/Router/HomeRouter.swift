@@ -8,9 +8,19 @@
 import Foundation
 
 
-class HomeRouter: HomeRouterProtocol {
+class HomeRouter: PresenterToRouterHomeProtocol {
     
-    static func startExecution(ref: HomeVC) {
+    static func createModule(ref: HomeVC) {
+        let presenter = HomePresenter()
         
+        // View
+        ref.homePresenterObject = presenter
+        
+        // Presenter
+        ref.homePresenterObject?.homeView = ref
+        ref.homePresenterObject?.homeInteractor = HomeInteractor()
+        
+        // Interactor
+        ref.homePresenterObject?.homeInteractor?.homePresenter = presenter
     }
 }

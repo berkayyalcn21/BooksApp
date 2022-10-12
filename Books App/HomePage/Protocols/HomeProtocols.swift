@@ -9,7 +9,7 @@ import Foundation
 
 protocol ViewToPresenterHomeProtocol {
     var homeInteractor: PresenterToInteracterHomeProtocol? { get set }
-    var homeView: PresenterToInteracterHomeProtocol? { get set }
+    var homeView: PresenterToViewHomeProtocol? { get set }
     
     func loadBooks()
 }
@@ -21,11 +21,12 @@ protocol PresenterToInteracterHomeProtocol {
 }
 
 protocol InteractorToPresenterHomeProtocol {
-    
+    func dataTransferToPresenter(_ bookList: Swift.Result<[Result], Error>)
 }
 
 protocol PresenterToViewHomeProtocol {
-    
+    func updateData(with books: [Result])
+    func updateError(with error: String)
 }
 
 protocol PresenterToRouterHomeProtocol {

@@ -10,7 +10,9 @@ import UIKit
 class HomeVC: UIViewController {
 
     @IBOutlet weak var homeCollectionView: UICollectionView!
+    var homePresenterObject: ViewToPresenterHomeProtocol?
     private let collectionViewKey = "HomeCollectionViewCell"
+    private var books: [Result] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,6 +20,11 @@ class HomeVC: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "line.3.horizontal.decrease.circle"), style: .done, target: self, action: #selector(addTapped))
         self.title = "Home"
         setupUI()
+        HomeRouter.createModule(ref: self)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        homePresenterObject?.loadBooks()
     }
 
     func setupUI() {
@@ -38,8 +45,6 @@ class HomeVC: UIViewController {
         
         
     }
-
-
 }
 
 extension HomeVC: UICollectionViewDelegate {
@@ -49,13 +54,20 @@ extension HomeVC: UICollectionViewDelegate {
 extension HomeVC: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return books.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cellModel = books[indexPath.row]
         let cell = homeCollectionView.dequeueReusableCell(withReuseIdentifier: collectionViewKey, for: indexPath) as! HomeCollectionViewCell
         cell.layer.cornerRadius = 10
-        cell.bookTitle.text = "Kırlangıç Çığlığı"
+        DispatchQueue.global().async { [weak self] in
+            let data = try! Data(contentsOf: URL(string: cellModel.artworkUrl100!)!)
+            DispatchQueue.main.async { [weak self] in
+                cell.bookImageView.image = UIImage(data: data)
+            }
+        }
+        cell.bookTitle.text = cellModel.name
         return cell
     }
 }
@@ -75,4 +87,23 @@ extension HomeVC: UICollectionViewDelegateFlowLayout {
     }
 }
 
-
+extension HomeVC: PresenterToViewHomeProtocol {
+    
+    func updateData(with books: [Result]) {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.books = books
+            self.homeCollectionView.reloadData()
+        }
+    }
+    
+    func updateError(with error: String) {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.books = []
+            print(error)
+        }
+    }
+    
+    
+}
