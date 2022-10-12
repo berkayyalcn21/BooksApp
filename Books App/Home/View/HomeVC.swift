@@ -20,7 +20,7 @@ class HomeVC: UIViewController {
         super.viewDidLoad()
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "line.3.horizontal.decrease.circle"), style: .done, target: self, action: #selector(addTapped))
-        self.title = "Home"
+        self.title = "Anasayfa"
         setupUI()
         HomeRouter.createModule(ref: self)
         homePresenterObject?.loadBooks(pagination: paginationTotal)
@@ -90,7 +90,6 @@ extension HomeVC: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        print(indexPath.row)
         if indexPath.row + 1 == paginationTotal {
             paginationTotal += 20
             homePresenterObject?.loadBooks(pagination: paginationTotal)
