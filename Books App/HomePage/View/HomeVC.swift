@@ -84,7 +84,6 @@ extension HomeVC: UICollectionViewDataSource {
         if indexPath.row + 1 == paginationTotal {
             paginationTotal += 20
             homePresenterObject?.loadBooks(pagination: paginationTotal)
-            homeCollectionView.reloadData()
         }
     }
 }
