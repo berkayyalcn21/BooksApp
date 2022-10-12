@@ -100,14 +100,12 @@
 		F029176628F68CA8008B7659 /* Books App */ = {
 			isa = PBXGroup;
 			children = (
+				F0D2512028F75DEE0049CF73 /* Supports */,
 				F0D2511928F723160049CF73 /* Networking */,
 				F0D2510628F7112A0049CF73 /* Details */,
 				F0D250F328F700900049CF73 /* Search */,
 				F05D8D6028F696FD00EB491B /* HomePage */,
-				F029176728F68CA8008B7659 /* AppDelegate.swift */,
-				F029176928F68CA8008B7659 /* SceneDelegate.swift */,
 				F029176D28F68CA8008B7659 /* Main.storyboard */,
-				F029177028F68CAD008B7659 /* Assets.xcassets */,
 				F029177228F68CAD008B7659 /* LaunchScreen.storyboard */,
 				F029177528F68CAD008B7659 /* Info.plist */,
 			);
@@ -307,6 +305,16 @@
 				F0D2511E28F723FF0049CF73 /* BookRequestModel.swift */,
 			);
 			path = Networking;
+			sourceTree = "<group>";
+		};
+		F0D2512028F75DEE0049CF73 /* Supports */ = {
+			isa = PBXGroup;
+			children = (
+				F029177028F68CAD008B7659 /* Assets.xcassets */,
+				F029176928F68CA8008B7659 /* SceneDelegate.swift */,
+				F029176728F68CA8008B7659 /* AppDelegate.swift */,
+			);
+			path = Supports;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
