@@ -342,7 +342,6 @@
 				F0D2513928F767740049CF73 /* Protocols */,
 				F0D2512F28F7610A0049CF73 /* CoreData */,
 				F0D2512628F75EE70049CF73 /* Router */,
-				F0D2512528F75E760049CF73 /* Entity */,
 				F0D2512428F75E710049CF73 /* Presenter */,
 				F0D2512328F75E6A0049CF73 /* Interactor */,
 				F0D2512228F75E650049CF73 /* View */,
@@ -374,13 +373,6 @@
 				F0D2512B28F75F460049CF73 /* FavoritesPresenter.swift */,
 			);
 			path = Presenter;
-			sourceTree = "<group>";
-		};
-		F0D2512528F75E760049CF73 /* Entity */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Entity;
 			sourceTree = "<group>";
 		};
 		F0D2512628F75EE70049CF73 /* Router */ = {

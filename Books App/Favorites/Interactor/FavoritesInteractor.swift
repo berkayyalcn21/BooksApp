@@ -8,10 +8,12 @@
 import Foundation
 import CoreData
 
-class FavoritesInteractor {
+class FavoritesInteractor: PresenterToInteractorFavoritesProtocol {
+    
+    var favoritesPresenter: InteractorToPresenterFavoritesProtocol?
     
     // Fetch data
-    func fetchData() -> [BooksEntity] {
+    func fetchAllData() {
         let fetchRequest: NSFetchRequest<BooksEntity> = BooksEntity.fetchRequest()
         
         do {
@@ -19,10 +21,10 @@ class FavoritesInteractor {
             let sorter = NSSortDescriptor(key: #keyPath(BooksEntity.sorter), ascending: false)
             fetchRequest.sortDescriptors = [sorter]
             let result = try context.fetch(fetchRequest)
-            return result
+            favoritesPresenter?.dataTransferToPresenter(favorites: result)
         }catch {
             print(error.localizedDescription)
-            return []
+            favoritesPresenter?.dataTransferToPresenter(favorites: [])
         }
     }
 }

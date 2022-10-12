@@ -11,13 +11,13 @@ protocol ViewToPresenterFavoritesProtocol {
     var favoritesInteractor: PresenterToInteractorFavoritesProtocol? { get set }
     var favoritesView: PresenterToViewFavoritesProtocol? { get set }
     
-    func loadBooks()
+    func fetchData()
 }
 
 protocol PresenterToInteractorFavoritesProtocol {
     var favoritesPresenter: InteractorToPresenterFavoritesProtocol? { get set }
     
-    func loadAllBooks()
+    func fetchAllData()
 }
 
 protocol InteractorToPresenterFavoritesProtocol {

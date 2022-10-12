@@ -11,12 +11,16 @@ class FavoritesVC: UIViewController {
 
     @IBOutlet weak var favoritesCollectionView: UICollectionView!
     private let collectionViewKey = "FavoritesCollectionViewCell"
+    private var favoritesList: [BooksEntity] = []
+    var favoritesPresenterObject: ViewToPresenterFavoritesProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.title = "Favoriler"
         setupUI()
+        FavoritesRouter.createModule(ref: self)
+        favoritesPresenterObject?.fetchData()
     }
     
     func setupUI() {
@@ -37,13 +41,21 @@ extension FavoritesVC: UICollectionViewDelegate {
 extension FavoritesVC: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return favoritesList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cellModel = favoritesList[indexPath.row]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: collectionViewKey, for: indexPath) as! FavoritesCollectionViewCell
-//        cell.favoritesActivityIndicator.stopAnimating()
-        cell.favoritesTitle.text = "Kitap Adı"
+        DispatchQueue.global().async { [weak self] in
+            let data = try! Data(contentsOf: URL(string: cellModel.image!)!)
+            DispatchQueue.main.async { [weak self] in
+                guard let _ = self else { return }
+                cell.favoritesImageView.image = UIImage(data: data)
+                cell.favoritesActivityIndicator.stopAnimating()
+            }
+        }
+        cell.favoritesTitle.text = cellModel.title
         return cell
     }
 }
@@ -60,5 +72,13 @@ extension FavoritesVC: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 20
+    }
+}
+
+extension FavoritesVC: PresenterToViewFavoritesProtocol {
+    
+    func dataTransferToView(favorites: Array<BooksEntity>) {
+        self.favoritesList = favorites
+        favoritesCollectionView.reloadData()
     }
 }
