@@ -35,6 +35,12 @@
 		F0D2511B28F7232C0049CF73 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D2511A28F7232C0049CF73 /* Networking.swift */; };
 		F0D2511D28F723C10049CF73 /* RequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D2511C28F723C10049CF73 /* RequestModel.swift */; };
 		F0D2511F28F723FF0049CF73 /* BookRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D2511E28F723FF0049CF73 /* BookRequestModel.swift */; };
+		F0D2512828F75F160049CF73 /* FavoritesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D2512728F75F160049CF73 /* FavoritesVC.swift */; };
+		F0D2512A28F75F3D0049CF73 /* FavoritesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D2512928F75F3D0049CF73 /* FavoritesInteractor.swift */; };
+		F0D2512C28F75F460049CF73 /* FavoritesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D2512B28F75F460049CF73 /* FavoritesPresenter.swift */; };
+		F0D2512E28F75F500049CF73 /* FavoritesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D2512D28F75F500049CF73 /* FavoritesRouter.swift */; };
+		F0D2513128F761210049CF73 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D2513028F761210049CF73 /* CoreDataStack.swift */; };
+		F0D2513428F7615F0049CF73 /* BooksDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F0D2513228F7615F0049CF73 /* BooksDataModel.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +74,12 @@
 		F0D2511A28F7232C0049CF73 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		F0D2511C28F723C10049CF73 /* RequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestModel.swift; sourceTree = "<group>"; };
 		F0D2511E28F723FF0049CF73 /* BookRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookRequestModel.swift; sourceTree = "<group>"; };
+		F0D2512728F75F160049CF73 /* FavoritesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesVC.swift; sourceTree = "<group>"; };
+		F0D2512928F75F3D0049CF73 /* FavoritesInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesInteractor.swift; sourceTree = "<group>"; };
+		F0D2512B28F75F460049CF73 /* FavoritesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesPresenter.swift; sourceTree = "<group>"; };
+		F0D2512D28F75F500049CF73 /* FavoritesRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesRouter.swift; sourceTree = "<group>"; };
+		F0D2513028F761210049CF73 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		F0D2513328F7615F0049CF73 /* BooksDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BooksDataModel.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,8 +113,8 @@
 			isa = PBXGroup;
 			children = (
 				F0D2512028F75DEE0049CF73 /* Supports */,
-				F0D2512128F75E100049CF73 /* Favorites */,
 				F0D2511928F723160049CF73 /* Networking */,
+				F0D2512128F75E100049CF73 /* Favorites */,
 				F0D2510628F7112A0049CF73 /* Details */,
 				F0D250F328F700900049CF73 /* Search */,
 				F05D8D6028F696FD00EB491B /* Home */,
@@ -321,8 +333,62 @@
 		F0D2512128F75E100049CF73 /* Favorites */ = {
 			isa = PBXGroup;
 			children = (
+				F0D2512F28F7610A0049CF73 /* CoreData */,
+				F0D2512628F75EE70049CF73 /* Router */,
+				F0D2512528F75E760049CF73 /* Entity */,
+				F0D2512428F75E710049CF73 /* Presenter */,
+				F0D2512328F75E6A0049CF73 /* Interactor */,
+				F0D2512228F75E650049CF73 /* View */,
 			);
 			path = Favorites;
+			sourceTree = "<group>";
+		};
+		F0D2512228F75E650049CF73 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F0D2512728F75F160049CF73 /* FavoritesVC.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F0D2512328F75E6A0049CF73 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				F0D2512928F75F3D0049CF73 /* FavoritesInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		F0D2512428F75E710049CF73 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				F0D2512B28F75F460049CF73 /* FavoritesPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		F0D2512528F75E760049CF73 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		F0D2512628F75EE70049CF73 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				F0D2512D28F75F500049CF73 /* FavoritesRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		F0D2512F28F7610A0049CF73 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				F0D2513028F761210049CF73 /* CoreDataStack.swift */,
+				F0D2513228F7615F0049CF73 /* BooksDataModel.xcdatamodeld */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -397,13 +463,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0D2513428F7615F0049CF73 /* BooksDataModel.xcdatamodeld in Sources */,
 				F029176C28F68CA8008B7659 /* HomeVC.swift in Sources */,
 				F0D2511B28F7232C0049CF73 /* Networking.swift in Sources */,
 				F0D2510128F701160049CF73 /* SearchEntity.swift in Sources */,
 				F05D8D6B28F699A100EB491B /* HomeEntity.swift in Sources */,
 				F0D250FF28F7010D0049CF73 /* SearchPresenter.swift in Sources */,
+				F0D2512828F75F160049CF73 /* FavoritesVC.swift in Sources */,
 				F0D2511028F7116D0049CF73 /* DetailsInteractor.swift in Sources */,
 				F05D8D6D28F699AB00EB491B /* HomeRouter.swift in Sources */,
+				F0D2512E28F75F500049CF73 /* FavoritesRouter.swift in Sources */,
 				F029176828F68CA8008B7659 /* AppDelegate.swift in Sources */,
 				F0D2510528F701260049CF73 /* SearchProtocols.swift in Sources */,
 				F07980B328F6B7DE00440FA2 /* HomeProtocols.swift in Sources */,
@@ -418,9 +487,12 @@
 				F0D2511428F711810049CF73 /* DetailsEntity.swift in Sources */,
 				F05D8D6928F6999600EB491B /* HomePresenter.swift in Sources */,
 				F05D8D6728F6998D00EB491B /* HomeInteractor.swift in Sources */,
+				F0D2512A28F75F3D0049CF73 /* FavoritesInteractor.swift in Sources */,
+				F0D2512C28F75F460049CF73 /* FavoritesPresenter.swift in Sources */,
 				F05D8D7028F699ED00EB491B /* HomeCollectionViewCell.swift in Sources */,
 				F0D2511F28F723FF0049CF73 /* BookRequestModel.swift in Sources */,
 				F0D2511228F711760049CF73 /* DetailsPresenter.swift in Sources */,
+				F0D2513128F761210049CF73 /* CoreDataStack.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -642,6 +714,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		F0D2513228F7615F0049CF73 /* BooksDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F0D2513328F7615F0049CF73 /* BooksDataModel.xcdatamodel */,
+			);
+			currentVersion = F0D2513328F7615F0049CF73 /* BooksDataModel.xcdatamodel */;
+			path = BooksDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = F029175C28F68CA8008B7659 /* Project object */;
 }
