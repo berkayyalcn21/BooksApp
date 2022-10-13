@@ -16,8 +16,8 @@ class HomePresenter: ViewToPresenterHomeProtocol {
         homeInteractor?.loadAllBooks(pagination: pagination)
     }
     
-    func addFavoriteBook(_ id: String, _ title: String, _ image: String) {
-        homeInteractor?.addFavoriteMyBook(id, title, image)
+    func addFavoriteBook(_ id: String, _ title: String, _ image: String, _ authorName: String, _ bookDate: String) {
+        homeInteractor?.addFavoriteMyBook(id, title, image, authorName, bookDate)
     }
     
     func deleteFavoriteBook(_ id: String) {
