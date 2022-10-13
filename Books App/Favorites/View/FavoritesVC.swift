@@ -50,6 +50,7 @@ extension FavoritesVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cellModel = favoritesList[indexPath.row]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: collectionViewKey, for: indexPath) as! FavoritesCollectionViewCell
+        cell.layer.cornerRadius = 10
         DispatchQueue.global().async { [weak self] in
             if cellModel.bookImage != nil {
                 let data = try! Data(contentsOf: URL(string: cellModel.bookImage!)!)
