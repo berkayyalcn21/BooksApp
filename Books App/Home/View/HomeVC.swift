@@ -67,8 +67,8 @@ class HomeVC: UIViewController {
                     check = true
                 }
             }
-            if !check && cellModel.id != nil && cellModel.name != nil && cellModel.artworkUrl100 != nil {
-                homePresenterObject?.addFavoriteBook(cellModel.id!, cellModel.name!, cellModel.artworkUrl100!)
+            if !check && cellModel.id != nil && cellModel.name != nil && cellModel.artworkUrl100 != nil && cellModel.artistName != nil && cellModel.releaseDate != nil {
+                homePresenterObject?.addFavoriteBook(cellModel.id!, cellModel.name!, cellModel.artworkUrl100!, cellModel.artistName!, cellModel.releaseDate!)
             }
         }
     }
@@ -79,7 +79,8 @@ extension HomeVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cellModel = books[indexPath.row]
         let details = storyboard?.instantiateViewController(withIdentifier: "DetailsVC") as! DetailsVC
-        details.result = cellModel
+        details.result = cellModel as AnyObject
+        details.dataType = .Books
         navigationController?.pushViewController(details, animated: true)
     }
 }
