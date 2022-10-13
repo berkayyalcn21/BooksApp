@@ -39,11 +39,14 @@ class FavoritesVC: UIViewController {
 
 extension FavoritesVC: UICollectionViewDelegate {
     
+    func makeTransformToDetails(_ toDetails: [BooksEntity]) -> [DetailsEntity] {
+        return toDetails.map { .init(id: $0.id!, imageView: $0.bookImage!, bookTitle: $0.title!, authorName: $0.authorName!, bookDate: $0.bookDate!) }
+    }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cellModel = favoritesList[indexPath.row]
+        let cellModel = makeTransformToDetails(favoritesList)[indexPath.row]
         let details = storyboard?.instantiateViewController(withIdentifier: "DetailsVC") as! DetailsVC
-        details.result = cellModel as AnyObject
-        details.dataType = .BooksEntity
+        details.result = cellModel
         navigationController?.pushViewController(details, animated: true)
     }
 }

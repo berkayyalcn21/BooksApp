@@ -15,7 +15,7 @@ class DetailsVC: UIViewController {
     @IBOutlet weak var detailsDate: UILabel!
     var detailsPresenterObject: ViewToPresenterDetailsProtocol?
     var result: DetailsEntity?
-    let starButton = UIBarButtonItem(image: UIImage(systemName: "star"), style: .done, target: DetailsVC.self, action: #selector(starred))
+    let starButton = UIBarButtonItem(image: UIImage(systemName: "star.fill"), style: .done, target: DetailsVC.self, action: #selector(starred))
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +46,7 @@ class DetailsVC: UIViewController {
     
     func checkStarButton() {
         guard let result else { return }
-        starButton.tintColor = .yellow
+        starButton.tintColor = .gray
         if let booksList = detailsPresenterObject?.fetchCoreDataList() {
             for i in booksList {
                 if i.id == result.id && result.id != nil {
