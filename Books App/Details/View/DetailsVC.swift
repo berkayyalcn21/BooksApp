@@ -15,14 +15,17 @@ class DetailsVC: UIViewController {
     @IBOutlet weak var detailsDate: UILabel!
     var detailsPresenterObject: ViewToPresenterDetailsProtocol?
     var result: DetailsEntity?
+    let starButton = UIBarButtonItem(image: UIImage(systemName: "star"), style: .done, target: DetailsVC.self, action: #selector(starred))
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "star"), style: .done, target: self, action: #selector(starred))
+    
+        navigationItem.rightBarButtonItem = starButton
         self.title = "Detay"
         DetailsRouter.createModule(ref: self)
         fetchData()
+        checkStarButton()
     }
 
     func fetchData() {
@@ -41,18 +44,32 @@ class DetailsVC: UIViewController {
         }
     }
     
+    func checkStarButton() {
+        guard let result else { return }
+        starButton.tintColor = .yellow
+        if let booksList = detailsPresenterObject?.fetchCoreDataList() {
+            for i in booksList {
+                if i.id == result.id && result.id != nil {
+                    starButton.tintColor = .yellow
+                }
+            }
+        }
+    }
+    
     @objc func starred() {
-//        var check: Bool = false
-//        if let booksList = detailsPresenterObject?.fetchCoreDataList() {
-//            for i in booksList {
-//                if i.id == result.id && result.id != nil {
-//                    homePresenterObject?.deleteFavoriteBook(result.id!)
-//                    check = true
-//                }
-//            }
-//            if !check && cellModel.id != nil && cellModel.name != nil && cellModel.artworkUrl100 != nil && cellModel.artistName != nil && cellModel.releaseDate != nil {
-//                homePresenterObject?.addFavoriteBook(cellModel.id!, cellModel.name!, cellModel.artworkUrl100!, cellModel.artistName!, cellModel.releaseDate!)
-//            }
-//        }
+        guard let result else { return }
+        var check: Bool = false
+        if let booksList = detailsPresenterObject?.fetchCoreDataList() {
+            for i in booksList {
+                if i.id == result.id && result.id != nil {
+                    detailsPresenterObject?.deleteFavoriteBook(result.id!)
+                    check = true
+                }
+            }
+            if !check {
+                detailsPresenterObject?.addFavoriteBook(result.id!, result.bookTitle!, result.imageView!, result.authorName!, result.bookDate!)
+            }
+        }
+        checkStarButton()
     }
 }
