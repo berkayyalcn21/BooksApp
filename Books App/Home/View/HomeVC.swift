@@ -25,6 +25,10 @@ class HomeVC: UIViewController {
         HomeRouter.createModule(ref: self)
         homePresenterObject?.loadBooks(pagination: paginationTotal)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        homeCollectionView.reloadData()
+    }
 
     func setupUI() {
         homeCollectionView.delegate = self
