@@ -7,11 +7,6 @@
 
 import Foundation
 
-enum NetworkError: Error {
-    case NetworkFailed  // Network connection error
-    case ParsingFailed  // Wrong parsing
-}
-
 class HomePresenter: ViewToPresenterHomeProtocol {
     
     var homeInteractor: PresenterToInteracterHomeProtocol?
@@ -19,6 +14,18 @@ class HomePresenter: ViewToPresenterHomeProtocol {
     
     func loadBooks(pagination: Int) {
         homeInteractor?.loadAllBooks(pagination: pagination)
+    }
+    
+    func addFavoriteBook(_ id: String, _ title: String, _ image: String) {
+        homeInteractor?.addFavoriteMyBook(id, title, image)
+    }
+    
+    func deleteFavoriteBook(_ id: String) {
+        homeInteractor?.deleteFavoriteMyBook(id)
+    }
+    
+    func fetchCoreDataList() -> [BooksEntity] {
+        return homeInteractor?.fetchCoreDataBooks() ?? []
     }
 }
 

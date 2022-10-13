@@ -17,16 +17,19 @@ class FavoritesVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "Favoriler"
         setupUI()
-        FavoritesRouter.createModule(ref: self)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         favoritesPresenterObject?.fetchData()
     }
     
     func setupUI() {
+        self.title = "Favoriler"
         favoritesCollectionView.delegate = self
         favoritesCollectionView.dataSource = self
         registerCollectionView()
+        FavoritesRouter.createModule(ref: self)
     }
     
     func registerCollectionView() {
@@ -48,7 +51,7 @@ extension FavoritesVC: UICollectionViewDataSource {
         let cellModel = favoritesList[indexPath.row]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: collectionViewKey, for: indexPath) as! FavoritesCollectionViewCell
         DispatchQueue.global().async { [weak self] in
-            let data = try! Data(contentsOf: URL(string: cellModel.image!)!)
+            let data = try! Data(contentsOf: URL(string: cellModel.bookImage!)!)
             DispatchQueue.main.async { [weak self] in
                 guard let _ = self else { return }
                 cell.favoritesImageView.image = UIImage(data: data)

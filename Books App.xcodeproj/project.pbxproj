@@ -13,6 +13,7 @@
 		F029176F28F68CA8008B7659 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F029176D28F68CA8008B7659 /* Main.storyboard */; };
 		F029177128F68CAD008B7659 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F029177028F68CAD008B7659 /* Assets.xcassets */; };
 		F029177428F68CAD008B7659 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F029177228F68CAD008B7659 /* LaunchScreen.storyboard */; };
+		F038B2CA28F85B7600A9A695 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F038B2C928F85B7600A9A695 /* CoreDataManager.swift */; };
 		F05D8D6728F6998D00EB491B /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05D8D6628F6998D00EB491B /* HomeInteractor.swift */; };
 		F05D8D6928F6999600EB491B /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05D8D6828F6999600EB491B /* HomePresenter.swift */; };
 		F05D8D6B28F699A100EB491B /* HomeEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05D8D6A28F699A100EB491B /* HomeEntity.swift */; };
@@ -55,6 +56,7 @@
 		F029177028F68CAD008B7659 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F029177328F68CAD008B7659 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F029177528F68CAD008B7659 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F038B2C928F85B7600A9A695 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		F05D8D6628F6998D00EB491B /* HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
 		F05D8D6828F6999600EB491B /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
 		F05D8D6A28F699A100EB491B /* HomeEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeEntity.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				F0D2512028F75DEE0049CF73 /* Supports */,
+				F0D2512F28F7610A0049CF73 /* CoreData */,
 				F0D2511928F723160049CF73 /* Networking */,
 				F0D2512128F75E100049CF73 /* Favorites */,
 				F0D2510628F7112A0049CF73 /* Details */,
@@ -340,7 +343,6 @@
 			isa = PBXGroup;
 			children = (
 				F0D2513928F767740049CF73 /* Protocols */,
-				F0D2512F28F7610A0049CF73 /* CoreData */,
 				F0D2512628F75EE70049CF73 /* Router */,
 				F0D2512428F75E710049CF73 /* Presenter */,
 				F0D2512328F75E6A0049CF73 /* Interactor */,
@@ -387,6 +389,7 @@
 			isa = PBXGroup;
 			children = (
 				F0D2513028F761210049CF73 /* CoreDataStack.swift */,
+				F038B2C928F85B7600A9A695 /* CoreDataManager.swift */,
 				F0D2513228F7615F0049CF73 /* BooksDataModel.xcdatamodeld */,
 			);
 			path = CoreData;
@@ -494,6 +497,7 @@
 				F0D250FB28F700DF0049CF73 /* SearchVC.swift in Sources */,
 				F0D250FD28F701020049CF73 /* SearchInteractor.swift in Sources */,
 				F0D2511828F711940049CF73 /* DetailsProtocols.swift in Sources */,
+				F038B2CA28F85B7600A9A695 /* CoreDataManager.swift in Sources */,
 				F0D2511628F7118A0049CF73 /* DetailsRouter.swift in Sources */,
 				F0D2510328F7011E0049CF73 /* SearchRouter.swift in Sources */,
 				F0D2511428F711810049CF73 /* DetailsEntity.swift in Sources */,
