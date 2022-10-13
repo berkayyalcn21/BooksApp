@@ -13,6 +13,7 @@ class DetailsVC: UIViewController {
     @IBOutlet weak var detailsBookName: UILabel!
     @IBOutlet weak var detailsBookAuthor: UILabel!
     @IBOutlet weak var detailsDate: UILabel!
+    var detailsPresenterObject: ViewToPresenterDetailsProtocol?
     var dataType: DataType?
     var result: AnyObject?
 
@@ -21,6 +22,7 @@ class DetailsVC: UIViewController {
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "star"), style: .done, target: self, action: #selector(starred))
         self.title = "Detay"
+        DetailsRouter.createModule(ref: self)
         fetchData()
     }
     

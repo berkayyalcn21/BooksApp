@@ -6,3 +6,15 @@
 //
 
 import Foundation
+
+class DetailsRouter: PresenterToRouterDetailsProtocol {
+    static func createModule(ref: DetailsVC) {
+        let presenter = DetailsPresenter()
+        
+        // View
+        ref.detailsPresenterObject = presenter
+        
+        // Presenter
+        ref.detailsPresenterObject?.detailsInteractor = DetailsInteractor()
+    }
+}
