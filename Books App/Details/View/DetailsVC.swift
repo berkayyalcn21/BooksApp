@@ -67,6 +67,17 @@ class DetailsVC: UIViewController {
     }
     
     @objc func starred() {
-        print("Clicked")
+//        var check: Bool = false
+//        if let booksList = detailsPresenterObject?.fetchCoreDataList() {
+//            for i in booksList {
+//                if i.id == result.id && result.id != nil {
+//                    homePresenterObject?.deleteFavoriteBook(result.id!)
+//                    check = true
+//                }
+//            }
+//            if !check && cellModel.id != nil && cellModel.name != nil && cellModel.artworkUrl100 != nil && cellModel.artistName != nil && cellModel.releaseDate != nil {
+//                homePresenterObject?.addFavoriteBook(cellModel.id!, cellModel.name!, cellModel.artworkUrl100!, cellModel.artistName!, cellModel.releaseDate!)
+//            }
+//        }
     }
 }
