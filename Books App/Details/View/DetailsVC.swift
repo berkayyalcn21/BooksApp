@@ -56,8 +56,8 @@ class DetailsVC: UIViewController {
                 }
                 
                 detailsBookName.text = result.title
-                detailsBookAuthor.text = "Boş"
-                detailsDate.text = "Boş"
+                detailsBookAuthor.text = result.authorName
+                detailsDate.text = result.bookDate
             }
         case .none: break
         }
