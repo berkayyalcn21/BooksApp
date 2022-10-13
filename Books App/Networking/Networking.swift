@@ -5,7 +5,7 @@
 //  Created by Berkay on 12.10.2022.
 //
 
-import Foundation
+import Foundation  
 
 protocol NetworkingProtocol {
     func requestData<T: Decodable>(request: BaseModel, completion: @escaping ((Result<T, Error>) -> Void))

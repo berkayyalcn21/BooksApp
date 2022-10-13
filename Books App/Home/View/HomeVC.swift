@@ -25,6 +25,14 @@ class HomeVC: UIViewController {
         HomeRouter.createModule(ref: self)
         homePresenterObject?.loadBooks(pagination: paginationTotal)
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if let booksList = homePresenterObject?.fetchCoreDataList() {
+            for i in booksList {
+                print(i)
+            }
+        }
+    }
 
     func setupUI() {
         homeCollectionView.delegate = self
@@ -48,6 +56,21 @@ class HomeVC: UIViewController {
         actionSheet.addAction(UIAlertAction(title: "Sadece beğenilenler", style: .default))
         actionSheet.addAction(UIAlertAction(title: "Vazgeç", style: .cancel))
         present(actionSheet, animated: true)
+    }
+    
+    func starButtonTapped(_ cellModel: Books) {
+        var check: Bool = false
+        if let booksList = homePresenterObject?.fetchCoreDataList() {
+            for i in booksList {
+                if i.id == cellModel.id && cellModel.id != nil {
+                    homePresenterObject?.deleteFavoriteBook(cellModel.id!)
+                    check = true
+                }
+            }
+            if !check && cellModel.id != nil && cellModel.name != nil && cellModel.artworkUrl100 != nil {
+                homePresenterObject?.addFavoriteBook(cellModel.id!, cellModel.name!, cellModel.artworkUrl100!)
+            }
+        }
     }
 }
 
@@ -80,10 +103,19 @@ extension HomeVC: UICollectionViewDataSource {
                 cell.cellActivityIndicator.stopAnimating()
             }
         }
+        cell.bookStarButton.tintColor = .gray
+        if let booksList = homePresenterObject?.fetchCoreDataList() {
+            for i in booksList {
+                if i.id == cellModel.id {
+                    cell.bookStarButton.tintColor = .yellow
+                }
+            }
+        }
         cell.row = indexPath.row
         cell.onTappedButton = { [weak self] index in
-            guard let _ = self else { return }
-            
+            guard let self = self else { return }
+            self.starButtonTapped(cellModel)
+            self.homeCollectionView.reloadItems(at: [indexPath])
         }
         cell.bookTitle.text = cellModel.name
         return cell
@@ -126,6 +158,7 @@ extension HomeVC: PresenterToViewHomeProtocol {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
             self.books = []
+            self.homeCollectionView.reloadData()
             print(error)
         }
     }

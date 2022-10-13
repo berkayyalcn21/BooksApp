@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreData
 
 
 class HomeInteractor: PresenterToInteracterHomeProtocol {
@@ -13,6 +14,7 @@ class HomeInteractor: PresenterToInteracterHomeProtocol {
     var homePresenter: InteractorToPresenterHomeProtocol?
     
     func loadAllBooks(pagination: Int) {
+        
         let baseRequestModel = BookRequestModel(paginationTotal: pagination)
         BookNetwork().requestData(request: baseRequestModel) { (result: Result<Welcome, Error>) in
             switch result {
@@ -26,34 +28,17 @@ class HomeInteractor: PresenterToInteracterHomeProtocol {
         }
     }
     
+    func addFavoriteMyBook(_ id: String, _ title: String, _ image: String) {
+        
+        CoreDataManager.shared.addFavoriteMyBook(id, title, image)
+    }
     
+    func deleteFavoriteMyBook(_ id: String) {
+        
+        CoreDataManager.shared.deleteFavoriteMyBook(id)
+    }
     
-    
-    
-    
-//    func loadAllBooks(pagination: Int) {
-//        // GET
-//        guard let url = URL(string: "https://rss.applemarketingtools.com/api/v2/us/books/top-free/\(pagination)/books.json") else {
-//            return
-//        }
-//
-//        let task = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
-//            guard let self = self else {
-//                return }
-//            if error != nil || data == nil {
-//                self.homePresenter?.dataTransferToPresenter(.failure(NetworkError.NetworkFailed))
-//                return
-//            }
-//
-//            do {
-//                let result = try JSONDecoder().decode(Welcome.self, from: data!)
-//                if let bookList = result.feed?.results {
-//                    self.homePresenter?.dataTransferToPresenter(.success(bookList))
-//                }
-//            }catch {
-//                self.homePresenter?.dataTransferToPresenter(.failure(NetworkError.ParsingFailed))
-//            }
-//        }
-//        task.resume()
-//    }
+    func fetchCoreDataBooks() -> [BooksEntity] {
+        return CoreDataManager.shared.fetchAllData()
+    }
 }
