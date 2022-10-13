@@ -28,7 +28,7 @@ class CoreDataManager {
     }
     
     // Add data
-    func addFavoriteMyBook(_ id: String, _ title: String, _ image: String) {
+    func addFavoriteMyBook(_ id: String, _ title: String, _ image: String, _ authorName: String, _ bookDate: String) {
         
         let managedContext = AppDelegate.sharedAppDelegate.coreDataStack.managedContext
         let data = BooksEntity(context: managedContext)
@@ -36,6 +36,8 @@ class CoreDataManager {
         data.setValue(id, forKey: "id")
         data.setValue(title, forKey: #keyPath(BooksEntity.title))
         data.setValue(image, forKey: #keyPath(BooksEntity.bookImage))
+        data.setValue(authorName, forKey: #keyPath(BooksEntity.authorName))
+        data.setValue(bookDate, forKey: #keyPath(BooksEntity.bookDate))
         data.setValue(Date(), forKey: #keyPath(BooksEntity.sorter))
         
         AppDelegate.sharedAppDelegate.coreDataStack.saveContext()
