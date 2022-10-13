@@ -25,14 +25,6 @@ class HomeVC: UIViewController {
         HomeRouter.createModule(ref: self)
         homePresenterObject?.loadBooks(pagination: paginationTotal)
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        if let booksList = homePresenterObject?.fetchCoreDataList() {
-            for i in booksList {
-                print(i)
-            }
-        }
-    }
 
     func setupUI() {
         homeCollectionView.delegate = self
@@ -50,10 +42,18 @@ class HomeVC: UIViewController {
     
     func actionSheetForFilter() {
         let actionSheet = UIAlertController(title: "Sırala", message: nil, preferredStyle: .actionSheet)
-        actionSheet.addAction(UIAlertAction(title: "Tümü", style: .default))
-        actionSheet.addAction(UIAlertAction(title: "Yeniden eskiye", style: .default))
-        actionSheet.addAction(UIAlertAction(title: "Eskiden yeniye", style: .default))
-        actionSheet.addAction(UIAlertAction(title: "Sadece beğenilenler", style: .default))
+        actionSheet.addAction(UIAlertAction(title: "Tümü", style: .default, handler: { _ in
+            print("Tümü")
+        }))
+        actionSheet.addAction(UIAlertAction(title: "Yeniden eskiye", style: .default, handler: { _ in
+            print("Yeniden eskiye")
+        }))
+        actionSheet.addAction(UIAlertAction(title: "Eskiden yeniye", style: .default, handler: { _ in
+            print("Eskiden yeniye")
+        }))
+        actionSheet.addAction(UIAlertAction(title: "Sadece beğenilenler", style: .default, handler: { _ in
+            print("Sadece beğenilenler")
+        }))
         actionSheet.addAction(UIAlertAction(title: "Vazgeç", style: .cancel))
         present(actionSheet, animated: true)
     }
