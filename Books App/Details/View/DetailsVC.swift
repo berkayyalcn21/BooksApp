@@ -15,12 +15,12 @@ class DetailsVC: UIViewController {
     @IBOutlet weak var detailsDate: UILabel!
     var detailsPresenterObject: ViewToPresenterDetailsProtocol?
     var result: DetailsEntity?
-    let starButton = UIBarButtonItem(image: UIImage(systemName: "star.fill"), style: .done, target: DetailsVC.self, action: #selector(starred))
+    var starButton = UIBarButtonItem()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-    
+        starButton = UIBarButtonItem(image: UIImage(systemName: "star.fill"), style: .done, target: self, action: #selector(starred))
         navigationItem.rightBarButtonItem = starButton
         self.title = "Detay"
         DetailsRouter.createModule(ref: self)
