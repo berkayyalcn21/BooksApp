@@ -46,7 +46,7 @@ class DetailsVC: UIViewController {
     
     func checkStarButton() {
         guard let result else { return }
-        starButton.tintColor = .yellow
+        starButton.tintColor = .gray
         if let booksList = detailsPresenterObject?.fetchCoreDataList() {
             for i in booksList {
                 if i.id == result.id && result.id != nil {
