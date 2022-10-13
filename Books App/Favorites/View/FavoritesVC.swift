@@ -39,6 +39,12 @@ class FavoritesVC: UIViewController {
 
 extension FavoritesVC: UICollectionViewDelegate {
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        let cellModel = favoritesList[indexPath.row]
+//        let details = storyboard?.instantiateViewController(withIdentifier: "DetailsVC") as! DetailsVC
+//        details.result = cellModel
+//        navigationController?.pushViewController(details, animated: true)
+    }
 }
 
 extension FavoritesVC: UICollectionViewDataSource {
@@ -50,12 +56,15 @@ extension FavoritesVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cellModel = favoritesList[indexPath.row]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: collectionViewKey, for: indexPath) as! FavoritesCollectionViewCell
+        cell.layer.cornerRadius = 10
         DispatchQueue.global().async { [weak self] in
-            let data = try! Data(contentsOf: URL(string: cellModel.bookImage!)!)
-            DispatchQueue.main.async { [weak self] in
-                guard let _ = self else { return }
-                cell.favoritesImageView.image = UIImage(data: data)
-                cell.favoritesActivityIndicator.stopAnimating()
+            if cellModel.bookImage != nil {
+                let data = try! Data(contentsOf: URL(string: cellModel.bookImage!)!)
+                DispatchQueue.main.async { [weak self] in
+                    guard let _ = self else { return }
+                    cell.favoritesImageView.image = UIImage(data: data)
+                    cell.favoritesActivityIndicator.stopAnimating()
+                }
             }
         }
         cell.favoritesTitle.text = cellModel.title
