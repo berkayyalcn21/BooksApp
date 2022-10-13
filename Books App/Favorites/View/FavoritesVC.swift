@@ -39,6 +39,12 @@ class FavoritesVC: UIViewController {
 
 extension FavoritesVC: UICollectionViewDelegate {
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        let cellModel = favoritesList[indexPath.row]
+//        let details = storyboard?.instantiateViewController(withIdentifier: "DetailsVC") as! DetailsVC
+//        details.result = cellModel
+//        navigationController?.pushViewController(details, animated: true)
+    }
 }
 
 extension FavoritesVC: UICollectionViewDataSource {
