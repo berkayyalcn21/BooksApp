@@ -15,7 +15,7 @@ class DetailsVC: UIViewController {
     @IBOutlet weak var detailsDate: UILabel!
     var detailsPresenterObject: ViewToPresenterDetailsProtocol?
     var result: DetailsEntity?
-    let starButton = UIBarButtonItem(image: UIImage(systemName: "star"), style: .done, target: DetailsVC.self, action: #selector(starred))
+    let starButton = UIBarButtonItem(image: UIImage(systemName: "star.fill"), style: .done, target: DetailsVC.self, action: #selector(starred))
 
     override func viewDidLoad() {
         super.viewDidLoad()
