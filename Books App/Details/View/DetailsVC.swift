@@ -13,58 +13,63 @@ class DetailsVC: UIViewController {
     @IBOutlet weak var detailsBookName: UILabel!
     @IBOutlet weak var detailsBookAuthor: UILabel!
     @IBOutlet weak var detailsDate: UILabel!
-    var dataType: DataType?
-    var result: AnyObject?
+    var detailsPresenterObject: ViewToPresenterDetailsProtocol?
+    var result: DetailsEntity?
+    let starButton = UIBarButtonItem(image: UIImage(systemName: "star"), style: .done, target: DetailsVC.self, action: #selector(starred))
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "star"), style: .done, target: self, action: #selector(starred))
+    
+        navigationItem.rightBarButtonItem = starButton
         self.title = "Detay"
+        DetailsRouter.createModule(ref: self)
         fetchData()
+        checkStarButton()
     }
-    
-    enum DataType {
-        case Books
-        case BooksEntity
-    }
-    
+
     func fetchData() {
-        switch dataType {
-        case .Books:
-            if let result = result as? Books {
-                DispatchQueue.global().async { [weak self] in
-                    let data = try! Data(contentsOf: URL(string: result.artworkUrl100!)!)
-                    DispatchQueue.main.async { [weak self] in
-                        guard let self = self else { return }
-                        self.detailsImageView.image = UIImage(data: data)
-                    }
+        if let result {
+            DispatchQueue.global().async { [weak self] in
+                let data = try! Data(contentsOf: URL(string: result.imageView!)!)
+                DispatchQueue.main.async { [weak self] in
+                    guard let self = self else { return }
+                    self.detailsImageView.image = UIImage(data: data)
                 }
-                
-                detailsBookName.text = result.name
-                detailsBookAuthor.text = result.artistName
-                detailsDate.text = result.releaseDate
             }
-        case .BooksEntity:
-            if let result = result as? BooksEntity {
-                DispatchQueue.global().async { [weak self] in
-                    let data = try! Data(contentsOf: URL(string: result.bookImage!)!)
-                    DispatchQueue.main.async { [weak self] in
-                        guard let self = self else { return }
-                        self.detailsImageView.image = UIImage(data: data)
-                    }
-                }
-                
-                detailsBookName.text = result.title
-                detailsBookAuthor.text = result.authorName
-                detailsDate.text = result.bookDate
-            }
-        case .none: break
+            
+            detailsBookName.text = result.bookTitle
+            detailsBookAuthor.text = result.authorName
+            detailsDate.text = result.bookDate
         }
-        
+    }
+    
+    func checkStarButton() {
+        guard let result else { return }
+        starButton.tintColor = .yellow
+        if let booksList = detailsPresenterObject?.fetchCoreDataList() {
+            for i in booksList {
+                if i.id == result.id && result.id != nil {
+                    starButton.tintColor = .yellow
+                }
+            }
+        }
     }
     
     @objc func starred() {
-        print("Clicked")
+        guard let result else { return }
+        var check: Bool = false
+        if let booksList = detailsPresenterObject?.fetchCoreDataList() {
+            for i in booksList {
+                if i.id == result.id && result.id != nil {
+                    detailsPresenterObject?.deleteFavoriteBook(result.id!)
+                    check = true
+                }
+            }
+            if !check {
+                detailsPresenterObject?.addFavoriteBook(result.id!, result.bookTitle!, result.imageView!, result.authorName!, result.bookDate!)
+            }
+        }
+        checkStarButton()
     }
 }

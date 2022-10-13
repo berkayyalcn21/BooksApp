@@ -76,11 +76,14 @@ class HomeVC: UIViewController {
 
 extension HomeVC: UICollectionViewDelegate {
     
+    func makeTransformToDetails(_ toDetails: [Books]) -> [DetailsEntity] {
+        return toDetails.map { .init(id: $0.id!, imageView: $0.artworkUrl100!, bookTitle: $0.name!, authorName: $0.artistName!, bookDate: $0.releaseDate!) }
+    }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cellModel = books[indexPath.row]
+        let cellModel = makeTransformToDetails(books)[indexPath.row]
         let details = storyboard?.instantiateViewController(withIdentifier: "DetailsVC") as! DetailsVC
-        details.result = cellModel as AnyObject
-        details.dataType = .Books
+        details.result = cellModel
         navigationController?.pushViewController(details, animated: true)
     }
 }
