@@ -13,7 +13,8 @@ class DetailsVC: UIViewController {
     @IBOutlet weak var detailsBookName: UILabel!
     @IBOutlet weak var detailsBookAuthor: UILabel!
     @IBOutlet weak var detailsDate: UILabel!
-    var result: Books?
+    var dataType: DataType?
+    var result: AnyObject?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,19 +24,44 @@ class DetailsVC: UIViewController {
         fetchData()
     }
     
+    enum DataType {
+        case Books
+        case BooksEntity
+    }
+    
     func fetchData() {
-        if let result {
-            DispatchQueue.global().async { [weak self] in
-                let data = try! Data(contentsOf: URL(string: result.artworkUrl100!)!)
-                DispatchQueue.main.async { [weak self] in
-                    guard let self = self else { return }
-                    self.detailsImageView.image = UIImage(data: data)
+        switch dataType {
+        case .Books:
+            if let result = result as? Books {
+                DispatchQueue.global().async { [weak self] in
+                    let data = try! Data(contentsOf: URL(string: result.artworkUrl100!)!)
+                    DispatchQueue.main.async { [weak self] in
+                        guard let self = self else { return }
+                        self.detailsImageView.image = UIImage(data: data)
+                    }
                 }
+                
+                detailsBookName.text = result.name
+                detailsBookAuthor.text = result.artistName
+                detailsDate.text = result.releaseDate
             }
+        case .BooksEntity:
+            if let result = result as? BooksEntity {
+                DispatchQueue.global().async { [weak self] in
+                    let data = try! Data(contentsOf: URL(string: result.bookImage!)!)
+                    DispatchQueue.main.async { [weak self] in
+                        guard let self = self else { return }
+                        self.detailsImageView.image = UIImage(data: data)
+                    }
+                }
+                
+                detailsBookName.text = result.title
+                detailsBookAuthor.text = "Boş"
+                detailsDate.text = "Boş"
+            }
+        case .none: break
         }
-        detailsBookName.text = result?.name
-        detailsBookAuthor.text = result?.artistName
-        detailsDate.text = result?.releaseDate
+        
     }
     
     @objc func starred() {
