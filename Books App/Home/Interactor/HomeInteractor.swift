@@ -13,6 +13,15 @@ class HomeInteractor: PresenterToInteracterHomeProtocol {
     
     var homePresenter: InteractorToPresenterHomeProtocol?
     
+    func stringToDate(_ string: String) -> Date {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+        let date = dateFormatter.date(from: string)
+        dateFormatter.string(from: date!)
+        return date ?? .now
+    }
+    
     func loadAllBooks(pagination: Int) {
         
         let baseRequestModel = BookRequestModel(paginationTotal: pagination)
@@ -20,7 +29,10 @@ class HomeInteractor: PresenterToInteracterHomeProtocol {
             switch result {
             case .success(let success):
                 if let books = success.feed?.results {
-                    self.homePresenter?.dataTransferToPresenter(with: books)
+                    let booksList: [BooksList] = books.map {
+                        let date = self.stringToDate($0.releaseDate ?? "")
+                        return BooksList(artistName: $0.artistName, id: $0.id, name: $0.name, releaseDate: date, artworkUrl100: $0.artworkUrl100) }
+                    self.homePresenter?.dataTransferToPresenter(with: booksList)
                 }
             case .failure(_):
                 break

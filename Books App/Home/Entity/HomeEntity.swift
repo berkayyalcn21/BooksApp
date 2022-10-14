@@ -57,6 +57,20 @@ struct Books: Codable {
         case artistURL = "artistUrl"
         case contentAdvisoryRating, artworkUrl100, genres, url
     }
+    
+    init(artistName: String?, id: String?, name: String?, releaseDate: String?, kind: String?, artistID: String?, artistURL: String?, contentAdvisoryRating: ContentAdvisoryRating?, artworkUrl100: String?, genres: [Genre]?, url: String?) {
+        self.artistName = artistName
+        self.id = id
+        self.name = name
+        self.releaseDate = releaseDate
+        self.kind = kind
+        self.artistID = artistID
+        self.artistURL = artistURL
+        self.contentAdvisoryRating = contentAdvisoryRating
+        self.artworkUrl100 = artworkUrl100
+        self.genres = genres
+        self.url = url
+    }
 }
 
 enum ContentAdvisoryRating: String, Codable {

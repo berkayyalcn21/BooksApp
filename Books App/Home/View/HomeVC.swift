@@ -13,7 +13,7 @@ class HomeVC: UIViewController {
     @IBOutlet weak var homeActivityIndicator: UIActivityIndicatorView!
     var homePresenterObject: ViewToPresenterHomeProtocol?
     private let collectionViewKey = "HomeCollectionViewCell"
-    private var books: [Books] = []
+    private var booksList: [BooksList] = []
     private var paginationTotal = 20
     
     override func viewDidLoad() {
@@ -23,7 +23,7 @@ class HomeVC: UIViewController {
         self.title = "Anasayfa"
         setupUI()
         HomeRouter.createModule(ref: self)
-        homePresenterObject?.loadBooks(pagination: paginationTotal)
+        filterButtonFunc(.All)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -44,25 +44,34 @@ class HomeVC: UIViewController {
         actionSheetForFilter()
     }
     
+    func filterButtonFunc(_ type: FilterButton) {
+        homePresenterObject?.filterButton = type
+        homePresenterObject?.loadBooks(pagination: paginationTotal)
+    }
+    
     func actionSheetForFilter() {
         let actionSheet = UIAlertController(title: "Sırala", message: nil, preferredStyle: .actionSheet)
-        actionSheet.addAction(UIAlertAction(title: "Tümü", style: .default, handler: { _ in
-            print("Tümü")
+        actionSheet.addAction(UIAlertAction(title: "Tümü", style: .default, handler: { [weak self] _ in
+            guard let self else { return }
+            self.filterButtonFunc(.All)
         }))
-        actionSheet.addAction(UIAlertAction(title: "Yeniden eskiye", style: .default, handler: { _ in
-            print("Yeniden eskiye")
+        actionSheet.addAction(UIAlertAction(title: "Yeniden eskiye", style: .default, handler: { [weak self] _ in
+            guard let self else { return }
+            self.filterButtonFunc(.NewToOld)
         }))
-        actionSheet.addAction(UIAlertAction(title: "Eskiden yeniye", style: .default, handler: { _ in
-            print("Eskiden yeniye")
+        actionSheet.addAction(UIAlertAction(title: "Eskiden yeniye", style: .default, handler: { [weak self] _ in
+            guard let self else { return }
+            self.filterButtonFunc(.OldToNew)
         }))
-        actionSheet.addAction(UIAlertAction(title: "Sadece beğenilenler", style: .default, handler: { _ in
-            print("Sadece beğenilenler")
+        actionSheet.addAction(UIAlertAction(title: "Sadece beğenilenler", style: .default, handler: { [weak self] _ in
+            guard let self else { return }
+            self.filterButtonFunc(.Favorites)
         }))
         actionSheet.addAction(UIAlertAction(title: "Vazgeç", style: .cancel))
         present(actionSheet, animated: true)
     }
     
-    func starButtonTapped(_ cellModel: Books) {
+    func starButtonTapped(_ cellModel: BooksList) {
         var check: Bool = false
         if let booksList = homePresenterObject?.fetchCoreDataList() {
             for i in booksList {
@@ -72,7 +81,9 @@ class HomeVC: UIViewController {
                 }
             }
             if !check && cellModel.id != nil && cellModel.name != nil && cellModel.artworkUrl100 != nil && cellModel.artistName != nil && cellModel.releaseDate != nil {
-                homePresenterObject?.addFavoriteBook(cellModel.id!, cellModel.name!, cellModel.artworkUrl100!, cellModel.artistName!, cellModel.releaseDate!)
+                let dateFormatter = DateFormatter()
+                let stringDate = dateFormatter.string(from: cellModel.releaseDate ?? .now)
+                homePresenterObject?.addFavoriteBook(cellModel.id!, cellModel.name!, cellModel.artworkUrl100!, cellModel.artistName!, stringDate)
             }
         }
     }
@@ -80,12 +91,23 @@ class HomeVC: UIViewController {
 
 extension HomeVC: UICollectionViewDelegate {
     
-    func makeTransformToDetails(_ toDetails: [Books]) -> [DetailsEntity] {
-        return toDetails.map { .init(id: $0.id!, imageView: $0.artworkUrl100!, bookTitle: $0.name!, authorName: $0.artistName!, bookDate: $0.releaseDate!) }
+    func dateToString(_ date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        return dateFormatter.string(from: date)
+    }
+    
+    func makeTransformToDetails(_ booksList: [BooksList]) -> [DetailsEntity] {
+        let newBooksList: [Books] = booksList.map {
+            let date = self.dateToString($0.releaseDate ?? .now)
+            return Books(artistName: $0.artistName, id: $0.id, name: $0.name, releaseDate: date, kind: nil, artistID: nil, artistURL: nil, contentAdvisoryRating: nil, artworkUrl100: $0.artworkUrl100, genres: nil, url: nil)
+        }
+        return newBooksList.map {
+            .init(id: $0.id!, imageView: $0.artworkUrl100!, bookTitle: $0.name!, authorName: $0.artistName!, bookDate: $0.releaseDate!) }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cellModel = makeTransformToDetails(books)[indexPath.row]
+        let cellModel = makeTransformToDetails(booksList)[indexPath.row]
         let details = storyboard?.instantiateViewController(withIdentifier: "DetailsVC") as! DetailsVC
         details.result = cellModel
         navigationController?.pushViewController(details, animated: true)
@@ -95,14 +117,15 @@ extension HomeVC: UICollectionViewDelegate {
 extension HomeVC: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return books.count
+        return booksList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         homeActivityIndicator.stopAnimating()
-        let cellModel = books[indexPath.row]
+        let cellModel = booksList[indexPath.row]
         let cell = homeCollectionView.dequeueReusableCell(withReuseIdentifier: collectionViewKey, for: indexPath) as! HomeCollectionViewCell
         cell.layer.cornerRadius = 10
+        
         DispatchQueue.global().async { [weak self] in
             let data = try! Data(contentsOf: URL(string: cellModel.artworkUrl100!)!)
             DispatchQueue.main.async { [weak self] in
@@ -111,6 +134,7 @@ extension HomeVC: UICollectionViewDataSource {
                 cell.cellActivityIndicator.stopAnimating()
             }
         }
+        
         cell.bookStarButton.tintColor = .gray
         if let booksList = homePresenterObject?.fetchCoreDataList() {
             for i in booksList {
@@ -119,6 +143,7 @@ extension HomeVC: UICollectionViewDataSource {
                 }
             }
         }
+        
         cell.row = indexPath.row
         cell.onTappedButton = { [weak self] index in
             guard let self = self else { return }
@@ -154,10 +179,10 @@ extension HomeVC: UICollectionViewDelegateFlowLayout {
 
 extension HomeVC: PresenterToViewHomeProtocol {
     
-    func updateData(with books: [Books]) {
+    func updateData(with booksList: [BooksList]) {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
-            self.books = books
+            self.booksList = booksList
             self.homeCollectionView.reloadData()
         }
     }
@@ -165,7 +190,7 @@ extension HomeVC: PresenterToViewHomeProtocol {
     func updateError(with error: String) {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
-            self.books = []
+            self.booksList = []
             self.homeCollectionView.reloadData()
             print(error)
         }
