@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="84" id="KGk-i7-Jjw" customClass="SearchTableViewCell" customModule="Books_App" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="385" height="84"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="385" height="84"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Zte-Pw-le8">
+                        <rect key="frame" x="4" y="4" width="80" height="76"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="76" id="68V-R6-b0u"/>
+                            <constraint firstAttribute="width" constant="80" id="PBw-YZ-qKm"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Book Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Sd-gF-qPH">
+                        <rect key="frame" x="89" y="4" width="291" height="21"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Author Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XGE-kc-E8Y">
+                        <rect key="frame" x="89" y="32" width="291" height="18"/>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MRC-SX-468">
+                        <rect key="frame" x="89" y="57" width="291" height="18"/>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="MRC-SX-468" secondAttribute="trailing" constant="5" id="89F-UX-0lH"/>
+                    <constraint firstItem="8Sd-gF-qPH" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="8if-b7-yE5"/>
+                    <constraint firstItem="8Sd-gF-qPH" firstAttribute="leading" secondItem="Zte-Pw-le8" secondAttribute="trailing" constant="5" id="8x8-yV-a5H"/>
+                    <constraint firstItem="Zte-Pw-le8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="4" id="9iY-Ag-5NI"/>
+                    <constraint firstItem="MRC-SX-468" firstAttribute="top" secondItem="XGE-kc-E8Y" secondAttribute="bottom" constant="7" id="Acw-Ab-7uy"/>
+                    <constraint firstAttribute="trailing" secondItem="8Sd-gF-qPH" secondAttribute="trailing" constant="5" id="S67-uX-UvG"/>
+                    <constraint firstItem="MRC-SX-468" firstAttribute="leading" secondItem="Zte-Pw-le8" secondAttribute="trailing" constant="5" id="VSk-02-og1"/>
+                    <constraint firstAttribute="trailing" secondItem="XGE-kc-E8Y" secondAttribute="trailing" constant="5" id="YSL-HV-HR9"/>
+                    <constraint firstAttribute="bottom" secondItem="Zte-Pw-le8" secondAttribute="bottom" constant="4" id="aaY-xN-vq3"/>
+                    <constraint firstItem="Zte-Pw-le8" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="otr-Io-9Fa"/>
+                    <constraint firstItem="XGE-kc-E8Y" firstAttribute="leading" secondItem="Zte-Pw-le8" secondAttribute="trailing" constant="5" id="tJp-6Z-G4Y"/>
+                    <constraint firstItem="XGE-kc-E8Y" firstAttribute="top" secondItem="8Sd-gF-qPH" secondAttribute="bottom" constant="7" id="vJI-q2-KHn"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="authorNameLabel" destination="XGE-kc-E8Y" id="XRw-gK-FdH"/>
+                <outlet property="bookImageView" destination="Zte-Pw-le8" id="AJd-vM-ifm"/>
+                <outlet property="bookNameLabel" destination="8Sd-gF-qPH" id="UXP-Jk-3eI"/>
+                <outlet property="dateLabel" destination="MRC-SX-468" id="tj9-yC-MBB"/>
+            </connections>
+            <point key="canvasLocation" x="165.38461538461539" y="2.8436018957345972"/>
+        </tableViewCell>
+    </objects>
+</document>

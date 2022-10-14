@@ -88,20 +88,43 @@
                                     <constraint firstItem="mAc-hd-fOv" firstAttribute="leading" secondItem="HnI-Yi-djE" secondAttribute="leading" constant="8" id="z8J-1f-qjf"/>
                                 </constraints>
                             </view>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tGF-xI-lW9">
-                                <rect key="frame" x="-2" y="130" width="191" height="45"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            </pickerView>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Kategori seç" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="j5o-28-eW8">
+                                <rect key="frame" x="10" y="147" width="370" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="cXV-oD-k3y">
+                                <rect key="frame" x="0.0" y="201" width="390" height="560"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                            <activityIndicatorView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="Ruh-rI-N1u">
+                                <rect key="frame" x="176.66666666666666" y="403.66666666666669" width="37" height="37"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="I9g-a1-eTv"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="j5o-28-eW8" firstAttribute="leading" secondItem="I9g-a1-eTv" secondAttribute="leading" constant="10" id="1nL-3X-Q9w"/>
+                            <constraint firstItem="Ruh-rI-N1u" firstAttribute="centerY" secondItem="vor-pn-fzW" secondAttribute="centerY" id="9X8-84-oDp"/>
+                            <constraint firstItem="I9g-a1-eTv" firstAttribute="bottom" secondItem="cXV-oD-k3y" secondAttribute="bottom" id="MV0-Hb-rBq"/>
+                            <constraint firstItem="j5o-28-eW8" firstAttribute="top" secondItem="HnI-Yi-djE" secondAttribute="bottom" constant="10" id="NUL-FQ-lMA"/>
                             <constraint firstItem="HnI-Yi-djE" firstAttribute="top" secondItem="I9g-a1-eTv" secondAttribute="top" id="PR1-eV-azy"/>
+                            <constraint firstItem="cXV-oD-k3y" firstAttribute="leading" secondItem="I9g-a1-eTv" secondAttribute="leading" id="fRn-qt-64p"/>
                             <constraint firstItem="HnI-Yi-djE" firstAttribute="leading" secondItem="I9g-a1-eTv" secondAttribute="leading" id="ibn-56-6Fb"/>
+                            <constraint firstItem="I9g-a1-eTv" firstAttribute="trailing" secondItem="j5o-28-eW8" secondAttribute="trailing" constant="10" id="k9e-dg-7nG"/>
+                            <constraint firstItem="Ruh-rI-N1u" firstAttribute="centerX" secondItem="vor-pn-fzW" secondAttribute="centerX" id="n7G-V6-ZpH"/>
+                            <constraint firstItem="I9g-a1-eTv" firstAttribute="trailing" secondItem="cXV-oD-k3y" secondAttribute="trailing" id="oUz-vB-bob"/>
                             <constraint firstItem="HnI-Yi-djE" firstAttribute="trailing" secondItem="I9g-a1-eTv" secondAttribute="trailing" id="qoo-vJ-9KZ"/>
+                            <constraint firstItem="cXV-oD-k3y" firstAttribute="top" secondItem="j5o-28-eW8" secondAttribute="bottom" constant="20" id="ztZ-Ro-75e"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="clw-2b-Vse"/>
+                    <connections>
+                        <outlet property="categoryTextField" destination="j5o-28-eW8" id="38S-b2-O3z"/>
+                        <outlet property="searchActivityIndicator" destination="Ruh-rI-N1u" id="oIZ-1H-9Yv"/>
+                        <outlet property="searchTableView" destination="cXV-oD-k3y" id="Q6x-yC-2OQ"/>
+                        <outlet property="searchTextField" destination="mAc-hd-fOv" id="Z8Z-yj-NNA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dk7-US-BOZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
