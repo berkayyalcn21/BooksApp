@@ -10,6 +10,7 @@ import Foundation
 protocol ViewToPresenterHomeProtocol {
     var homeInteractor: PresenterToInteracterHomeProtocol? { get set }
     var homeView: PresenterToViewHomeProtocol? { get set }
+    var filterButton: FilterButton? { get set }
     
     func loadBooks(pagination: Int)
     func addFavoriteBook(_ id: String, _ title: String, _ image: String, _ authorName: String, _ bookDate: String)
@@ -27,11 +28,11 @@ protocol PresenterToInteracterHomeProtocol {
 }
 
 protocol InteractorToPresenterHomeProtocol {
-    func dataTransferToPresenter(with books: [Books])
+    func dataTransferToPresenter(with booksList: [BooksList])
 }
 
 protocol PresenterToViewHomeProtocol {
-    func updateData(with books: [Books])
+    func updateData(with booksList: [BooksList])
     func updateError(with error: String)
 }
 
