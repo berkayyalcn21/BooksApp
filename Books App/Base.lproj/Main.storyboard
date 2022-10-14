@@ -230,11 +230,11 @@
             </objects>
             <point key="canvasLocation" x="9238.461538461539" y="-28.436018957345969"/>
         </scene>
-        <!--Item-->
+        <!--Anasayfa-->
         <scene sceneID="UdI-zZ-7Uy">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="MXy-ps-gVY" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" image="homekit" catalog="system" id="qtf-7g-uNG"/>
+                    <tabBarItem key="tabBarItem" title="Anasayfa" image="homekit" catalog="system" id="qtf-7g-uNG"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="gcf-TC-UNU">
                         <rect key="frame" x="0.0" y="47" width="390" height="44"/>
@@ -249,11 +249,11 @@
             </objects>
             <point key="canvasLocation" x="7453.8461538461534" y="-28.436018957345969"/>
         </scene>
-        <!--Searh-->
+        <!--Arama-->
         <scene sceneID="96f-qj-c4a">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Tim-1q-6B2" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Searh" image="magnifyingglass" catalog="system" id="wis-Np-4T7"/>
+                    <tabBarItem key="tabBarItem" title="Arama" image="magnifyingglass" catalog="system" id="wis-Np-4T7"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="C0a-0k-aqX">
                         <rect key="frame" x="0.0" y="47" width="390" height="44"/>
@@ -288,11 +288,11 @@
             </objects>
             <point key="canvasLocation" x="6522" y="682"/>
         </scene>
-        <!--Favorites-->
+        <!--Favoriler-->
         <scene sceneID="PSe-gh-hLM">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="QvS-H4-GCs" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Favorites" image="heart.fill" catalog="system" id="7SL-u4-cPv"/>
+                    <tabBarItem key="tabBarItem" title="Favoriler" image="heart.fill" catalog="system" id="7SL-u4-cPv"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="EpK-vi-iTN">
                         <rect key="frame" x="0.0" y="47" width="390" height="44"/>
