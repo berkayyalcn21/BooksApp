@@ -42,6 +42,8 @@ src="https://github.com/berkayyalcn21/BooksApp/blob/main/images/favoritiesPage.p
   - Auto Layout
   - TabBar
   - Navigation Controller
+  - Picker
+  - ActionSheet
   
 #### Network
   - Books Api: https://rss.applemarketingtools.com/api/v2/us/books/top-free/100/books.json
