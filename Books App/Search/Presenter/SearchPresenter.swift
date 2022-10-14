@@ -8,6 +8,19 @@
 import Foundation
 
 
-class SearchPresenter {
+class SearchPresenter: ViewToPresenterSearchProtocol {
     
+    var searchInteractor: PresenterToInteractorSearchProtocol?
+    var searchView: PresenterToViewSearchProtocol?
+    
+    func fetchData() {
+        searchInteractor?.fetchAllData()
+    }
+}
+
+extension SearchPresenter: InteractorToPresenterSearchProtocol {
+    
+    func dataTransferToPresenter(with books: [Books]) {
+        searchView?.updateData(with: books)
+    }
 }

@@ -13,6 +13,8 @@
 		F029176F28F68CA8008B7659 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F029176D28F68CA8008B7659 /* Main.storyboard */; };
 		F029177128F68CAD008B7659 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F029177028F68CAD008B7659 /* Assets.xcassets */; };
 		F029177428F68CAD008B7659 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F029177228F68CAD008B7659 /* LaunchScreen.storyboard */; };
+		F036AF9128F98A9E007483F8 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F036AF8F28F98A9E007483F8 /* SearchTableViewCell.swift */; };
+		F036AF9228F98A9E007483F8 /* SearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F036AF9028F98A9E007483F8 /* SearchTableViewCell.xib */; };
 		F038B2CA28F85B7600A9A695 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F038B2C928F85B7600A9A695 /* CoreDataManager.swift */; };
 		F038B2CC28F94FB000A9A695 /* BooksList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F038B2CB28F94FB000A9A695 /* BooksList.swift */; };
 		F05D8D6728F6998D00EB491B /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05D8D6628F6998D00EB491B /* HomeInteractor.swift */; };
@@ -57,6 +59,8 @@
 		F029177028F68CAD008B7659 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F029177328F68CAD008B7659 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F029177528F68CAD008B7659 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F036AF8F28F98A9E007483F8 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
+		F036AF9028F98A9E007483F8 /* SearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchTableViewCell.xib; sourceTree = "<group>"; };
 		F038B2C928F85B7600A9A695 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		F038B2CB28F94FB000A9A695 /* BooksList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksList.swift; sourceTree = "<group>"; };
 		F05D8D6628F6998D00EB491B /* HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
@@ -217,6 +221,8 @@
 			isa = PBXGroup;
 			children = (
 				F0D250FA28F700DF0049CF73 /* SearchVC.swift */,
+				F036AF8F28F98A9E007483F8 /* SearchTableViewCell.swift */,
+				F036AF9028F98A9E007483F8 /* SearchTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -469,6 +475,7 @@
 				F029177128F68CAD008B7659 /* Assets.xcassets in Resources */,
 				F029176F28F68CA8008B7659 /* Main.storyboard in Resources */,
 				F05D8D7128F699ED00EB491B /* HomeCollectionViewCell.xib in Resources */,
+				F036AF9228F98A9E007483F8 /* SearchTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -513,6 +520,7 @@
 				F0D2511F28F723FF0049CF73 /* BookRequestModel.swift in Sources */,
 				F0D2511228F711760049CF73 /* DetailsPresenter.swift in Sources */,
 				F0D2513128F761210049CF73 /* CoreDataStack.swift in Sources */,
+				F036AF9128F98A9E007483F8 /* SearchTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,6 +8,19 @@
 import Foundation
 
 
-class SearchRouter {
+class SearchRouter: PresenterToRouterSearchProcotocol {
     
+    static func createModule(ref: SearchVC) {
+        let presenter = SearchPresenter()
+        
+        // View
+        ref.searchPresenterObject = presenter
+        
+        // Presenter
+        ref.searchPresenterObject?.searchView = ref
+        ref.searchPresenterObject?.searchInteractor = SearchInteractor()
+        
+        // Interactor
+        ref.searchPresenterObject?.searchInteractor?.searchPresenter = presenter
+    }
 }
