@@ -56,6 +56,7 @@ class HomeVC: UIViewController {
     func filterButtonFunc(_ type: FilterButton) {
         homePresenterObject?.filterButton = type
         homePresenterObject?.loadBooks(pagination: paginationTotal)
+        homePresenterObject?.filteredList()
     }
     
     // Filter home page - actionSheet

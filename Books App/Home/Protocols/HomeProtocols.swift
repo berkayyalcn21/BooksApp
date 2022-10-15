@@ -16,6 +16,7 @@ protocol ViewToPresenterHomeProtocol {
     func addFavoriteBook(_ id: String, _ title: String, _ image: String, _ authorName: String, _ bookDate: String)
     func deleteFavoriteBook(_ id: String)
     func fetchCoreDataList() -> [BooksEntity]
+    func filteredList()
 }
 
 protocol PresenterToInteracterHomeProtocol {
