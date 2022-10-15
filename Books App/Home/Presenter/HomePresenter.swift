@@ -20,6 +20,7 @@ class HomePresenter: ViewToPresenterHomeProtocol {
     var homeInteractor: PresenterToInteracterHomeProtocol?
     var homeView: PresenterToViewHomeProtocol?
     var filterButton: FilterButton?
+    var booksList: [BooksList] = []
     
     // Fetch data books
     func loadBooks(pagination: Int) {
@@ -62,18 +63,15 @@ extension HomePresenter: InteractorToPresenterHomeProtocol {
         return booksList
     }
     
-    // Data transfer to home view
-    func dataTransferToPresenter(with booksList: [BooksList]) {
+    func filteredList() {
         switch filterButton {
         case .All:
             self.homeView?.updateData(with: booksList)
         case .NewToOld:
             let sortedBooksList = booksList.sorted {$0.releaseDate! > $1.releaseDate!}
-            print(sortedBooksList.count)
             self.homeView?.updateData(with: sortedBooksList)
         case .OldToNew:
             let sortedBooksList = booksList.sorted {$0.releaseDate! < $1.releaseDate!}
-            print(sortedBooksList.count)
             self.homeView?.updateData(with: sortedBooksList)
         case .Favorites:
             let favoritesList = homeInteractor?.fetchCoreDataBooks()
@@ -84,6 +82,12 @@ extension HomePresenter: InteractorToPresenterHomeProtocol {
         case .none:
             break
         }
+    }
+    
+    // Data transfer to home view
+    func dataTransferToPresenter(with booksList: [BooksList]) {
+        self.booksList = booksList
+        filteredList()
     }
 }
 
