@@ -11,6 +11,7 @@ class SearchInteractor: PresenterToInteractorSearchProtocol {
     
     var searchPresenter: InteractorToPresenterSearchProtocol?
     
+    // Fetch all books
     func fetchAllData() {
         let baseRequestModel = BookRequestModel(paginationTotal: 100)
         BookNetwork().requestData(request: baseRequestModel) { (result: Result<Welcome, Error>) in

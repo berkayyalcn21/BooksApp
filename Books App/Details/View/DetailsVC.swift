@@ -28,6 +28,7 @@ class DetailsVC: UIViewController {
         checkStarButton()
     }
 
+    // Fetch book data
     func fetchData() {
         if let result {
             DispatchQueue.global().async { [weak self] in
@@ -44,6 +45,7 @@ class DetailsVC: UIViewController {
         }
     }
     
+    // Star button color check
     func checkStarButton() {
         guard let result else { return }
         starButton.tintColor = .gray
@@ -56,6 +58,7 @@ class DetailsVC: UIViewController {
         }
     }
     
+    // Star button action
     @objc func starred() {
         guard let result else { return }
         var check: Bool = false

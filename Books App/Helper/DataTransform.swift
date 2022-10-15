@@ -30,5 +30,14 @@ class DataTransform {
             .init(id: $0.id!, imageView: $0.artworkUrl100!, bookTitle: $0.name!, authorName: $0.artistName!, bookDate: $0.releaseDate!) }
     }
     
+    func transformBooksToDetails(_ books: [Books]) -> [DetailsEntity] {
+        return books.map {
+            .init(id: $0.id!, imageView: $0.artworkUrl100!, bookTitle: $0.name!, authorName: $0.artistName!, bookDate: $0.releaseDate!) }
+    }
+    
+    func transformBooksEntityToDetails(_ toDetails: [BooksEntity]) -> [DetailsEntity] {
+        return toDetails.map { .init(id: $0.id!, imageView: $0.bookImage!, bookTitle: $0.title!, authorName: $0.authorName!, bookDate: $0.bookDate!) }
+    }
+    
 }
 
