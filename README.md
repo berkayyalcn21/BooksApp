@@ -39,6 +39,7 @@ src="https://github.com/berkayyalcn21/BooksApp/blob/main/images/favoritiesPage.p
 #### UIKit
   - CollectionView
   - TableView
+  - UIRefresh
   - Auto Layout
   - TabBar
   - Navigation Controller
