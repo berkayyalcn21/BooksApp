@@ -12,6 +12,8 @@
   - can add your favorite books to your favourites.
   - can look favorites page
   - can filter books by publication date
+
+- If you want to use this app, can download and run
   
   #### Screens
 
