@@ -39,12 +39,14 @@ class SearchVC: UIViewController {
         searchTableView.dataSource = self
         registerTableView()
         searchTextField.addTarget(self, action: #selector(didChangeText), for: .editingChanged)
+        self.setupHideKeyboardWhenTapOutside()
     }
     
     func registerTableView() {
         searchTableView.register(.init(nibName: tableViewKey, bundle: nil), forCellReuseIdentifier: tableViewKey)
     }
     
+    // Filter books list 
     func getFilteredItems() -> [Books] {
         let filteredList = books.filter { !(($0.genres ?? []).filter { ($0.name ?? "").localizedCaseInsensitiveContains(categoryTextField.text ?? "") }.isEmpty) }
         return filteredList
@@ -67,6 +69,7 @@ class SearchVC: UIViewController {
         searchTableView.reloadData()
     }
     
+    // Search text field action
     @objc func didChangeText() {
         getTextBaseItems()
     }
@@ -87,6 +90,7 @@ extension SearchVC: UIPickerViewDelegate, UIPickerViewDataSource {
         return categories[row]
     }
     
+    // Search with category
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if row == 0 {
             isCategorySearchActive = false
@@ -105,20 +109,9 @@ extension SearchVC: UIPickerViewDelegate, UIPickerViewDataSource {
 
 extension SearchVC: UITableViewDelegate {
     
-    func dateToString(_ date: Date) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        return dateFormatter.string(from: date)
-    }
-    
-    func makeTransformToDetails(_ books: [Books]) -> [DetailsEntity] {
-        return books.map {
-            .init(id: $0.id!, imageView: $0.artworkUrl100!, bookTitle: $0.name!, authorName: $0.artistName!, bookDate: $0.releaseDate!) }
-    }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let cellModel = makeTransformToDetails(filteredBooks)[indexPath.row]
+        let cellModel = DataTransform.shared.transformBooksToDetails(filteredBooks)[indexPath.row]
         let details = storyboard?.instantiateViewController(withIdentifier: "DetailsVC") as! DetailsVC
         details.result = cellModel
         navigationController?.pushViewController(details, animated: true)
@@ -135,6 +128,7 @@ extension SearchVC: UITableViewDataSource {
         let cellModel = filteredBooks[indexPath.row]
         let cell = searchTableView.dequeueReusableCell(withIdentifier: tableViewKey) as! SearchTableViewCell
         
+        // Data transform for cell image
         DispatchQueue.global().async { [weak self] in
             let data = try! Data(contentsOf: URL(string: cellModel.artworkUrl100!)!)
             DispatchQueue.main.async { [weak self] in
@@ -164,6 +158,17 @@ extension SearchVC: PresenterToViewSearchProtocol {
             self.searchTableView.reloadData()
         }
     }
-    
-    
 }
+
+extension UIViewController {
+     func setupHideKeyboardWhenTapOutside() {
+         self.view.addGestureRecognizer(self.endEditingRecognizer())
+         self.navigationController?.navigationBar.addGestureRecognizer(self.endEditingRecognizer())
+     }
+ 
+     private func endEditingRecognizer() -> UIGestureRecognizer {
+         let tap = UITapGestureRecognizer(target: self.view, action: #selector(self.view.endEditing(_:)))
+         tap.cancelsTouchesInView = false
+         return tap
+     }
+ }

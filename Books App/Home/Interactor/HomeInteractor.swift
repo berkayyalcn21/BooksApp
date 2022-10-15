@@ -13,6 +13,7 @@ class HomeInteractor: PresenterToInteracterHomeProtocol {
     
     var homePresenter: InteractorToPresenterHomeProtocol?
     
+    // Transform data string to date
     func stringToDate(_ string: String) -> Date {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
@@ -22,6 +23,7 @@ class HomeInteractor: PresenterToInteracterHomeProtocol {
         return date ?? .now
     }
     
+    // Fetch data books
     func loadAllBooks(pagination: Int) {
         
         let baseRequestModel = BookRequestModel(paginationTotal: pagination)
@@ -40,16 +42,19 @@ class HomeInteractor: PresenterToInteracterHomeProtocol {
         }
     }
     
+    // Add to core data
     func addFavoriteMyBook(_ id: String, _ title: String, _ image: String, _ authorName: String, _ bookDate: String) {
         
         CoreDataManager.shared.addFavoriteMyBook(id, title, image, authorName, bookDate)
     }
     
+    // Delete from core data
     func deleteFavoriteMyBook(_ id: String) {
         
         CoreDataManager.shared.deleteFavoriteMyBook(id)
     }
     
+    // Fetch data from core data
     func fetchCoreDataBooks() -> [BooksEntity] {
         return CoreDataManager.shared.fetchAllData()
     }

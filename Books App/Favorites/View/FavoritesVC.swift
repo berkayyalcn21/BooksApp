@@ -39,12 +39,8 @@ class FavoritesVC: UIViewController {
 
 extension FavoritesVC: UICollectionViewDelegate {
     
-    func makeTransformToDetails(_ toDetails: [BooksEntity]) -> [DetailsEntity] {
-        return toDetails.map { .init(id: $0.id!, imageView: $0.bookImage!, bookTitle: $0.title!, authorName: $0.authorName!, bookDate: $0.bookDate!) }
-    }
-    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cellModel = makeTransformToDetails(favoritesList)[indexPath.row]
+        let cellModel = DataTransform.shared.transformBooksEntityToDetails(favoritesList)[indexPath.row]
         let details = storyboard?.instantiateViewController(withIdentifier: "DetailsVC") as! DetailsVC
         details.result = cellModel
         navigationController?.pushViewController(details, animated: true)
@@ -61,6 +57,8 @@ extension FavoritesVC: UICollectionViewDataSource {
         let cellModel = favoritesList[indexPath.row]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: collectionViewKey, for: indexPath) as! FavoritesCollectionViewCell
         cell.layer.cornerRadius = 10
+        
+        // Data transform for cell image
         DispatchQueue.global().async { [weak self] in
             if cellModel.bookImage != nil {
                 let data = try! Data(contentsOf: URL(string: cellModel.bookImage!)!)
@@ -76,6 +74,7 @@ extension FavoritesVC: UICollectionViewDataSource {
     }
 }
 
+// CollectionView size settings
 extension FavoritesVC: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {

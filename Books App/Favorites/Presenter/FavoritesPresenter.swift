@@ -12,6 +12,7 @@ class FavoritesPresenter: ViewToPresenterFavoritesProtocol {
     var favoritesInteractor: PresenterToInteractorFavoritesProtocol?
     var favoritesView: PresenterToViewFavoritesProtocol?
     
+    // Fetch core data 
     func fetchData() {
         favoritesInteractor?.fetchAllData()
     }
