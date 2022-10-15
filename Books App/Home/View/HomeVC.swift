@@ -82,8 +82,13 @@ class HomeVC: UIViewController {
             }
             if !check && cellModel.id != nil && cellModel.name != nil && cellModel.artworkUrl100 != nil && cellModel.artistName != nil && cellModel.releaseDate != nil {
                 let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd"
                 let stringDate = dateFormatter.string(from: cellModel.releaseDate ?? .now)
-                homePresenterObject?.addFavoriteBook(cellModel.id!, cellModel.name!, cellModel.artworkUrl100!, cellModel.artistName!, stringDate)
+                homePresenterObject?.addFavoriteBook(cellModel.id!,
+                                                     cellModel.name!,
+                                                     cellModel.artworkUrl100!,
+                                                     cellModel.artistName!,
+                                                     stringDate)
             }
         }
     }
@@ -91,23 +96,8 @@ class HomeVC: UIViewController {
 
 extension HomeVC: UICollectionViewDelegate {
     
-    func dateToString(_ date: Date) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        return dateFormatter.string(from: date)
-    }
-    
-    func makeTransformToDetails(_ booksList: [BooksList]) -> [DetailsEntity] {
-        let newBooksList: [Books] = booksList.map {
-            let date = self.dateToString($0.releaseDate ?? .now)
-            return Books(artistName: $0.artistName, id: $0.id, name: $0.name, releaseDate: date, kind: nil, artistID: nil, artistURL: nil, contentAdvisoryRating: nil, artworkUrl100: $0.artworkUrl100, genres: nil, url: nil)
-        }
-        return newBooksList.map {
-            .init(id: $0.id!, imageView: $0.artworkUrl100!, bookTitle: $0.name!, authorName: $0.artistName!, bookDate: $0.releaseDate!) }
-    }
-    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cellModel = makeTransformToDetails(booksList)[indexPath.row]
+        let cellModel = DataTransform.shared.transformToDetails(booksList)[indexPath.row]
         let details = storyboard?.instantiateViewController(withIdentifier: "DetailsVC") as! DetailsVC
         details.result = cellModel
         navigationController?.pushViewController(details, animated: true)
