@@ -71,6 +71,25 @@ class HomeVC: UIViewController {
         present(actionSheet, animated: true)
     }
     
+    func dateToString(_ date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        return dateFormatter.string(from: date)
+    }
+    
+    func makeToBooks(_ booksList: [BooksList]) -> [Books] {
+        booksList.map {
+            let date = self.dateToString($0.releaseDate ?? .now)
+            return Books(artistName: $0.artistName, id: $0.id, name: $0.name, releaseDate: date, kind: nil, artistID: nil, artistURL: nil, contentAdvisoryRating: nil, artworkUrl100: $0.artworkUrl100, genres: nil, url: nil)
+        }
+    }
+    
+    func makeTransformToDetails(_ booksList: [BooksList]) -> [DetailsEntity] {
+        let newBooksList: [Books] = makeToBooks(booksList)
+        return newBooksList.map {
+            .init(id: $0.id!, imageView: $0.artworkUrl100!, bookTitle: $0.name!, authorName: $0.artistName!, bookDate: $0.releaseDate!) }
+    }
+    
     func starButtonTapped(_ cellModel: BooksList) {
         var check: Bool = false
         if let booksList = homePresenterObject?.fetchCoreDataList() {
@@ -84,28 +103,17 @@ class HomeVC: UIViewController {
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "yyyy-MM-dd"
                 let stringDate = dateFormatter.string(from: cellModel.releaseDate ?? .now)
-                homePresenterObject?.addFavoriteBook(cellModel.id!, cellModel.name!, cellModel.artworkUrl100!, cellModel.artistName!, stringDate)
+                homePresenterObject?.addFavoriteBook(cellModel.id!,
+                                                     cellModel.name!,
+                                                     cellModel.artworkUrl100!,
+                                                     cellModel.artistName!,
+                                                     stringDate)
             }
         }
     }
 }
 
 extension HomeVC: UICollectionViewDelegate {
-    
-    func dateToString(_ date: Date) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        return dateFormatter.string(from: date)
-    }
-    
-    func makeTransformToDetails(_ booksList: [BooksList]) -> [DetailsEntity] {
-        let newBooksList: [Books] = booksList.map {
-            let date = self.dateToString($0.releaseDate ?? .now)
-            return Books(artistName: $0.artistName, id: $0.id, name: $0.name, releaseDate: date, kind: nil, artistID: nil, artistURL: nil, contentAdvisoryRating: nil, artworkUrl100: $0.artworkUrl100, genres: nil, url: nil)
-        }
-        return newBooksList.map {
-            .init(id: $0.id!, imageView: $0.artworkUrl100!, bookTitle: $0.name!, authorName: $0.artistName!, bookDate: $0.releaseDate!) }
-    }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cellModel = makeTransformToDetails(booksList)[indexPath.row]
