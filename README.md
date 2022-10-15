@@ -37,6 +37,7 @@ src="https://github.com/berkayyalcn21/BooksApp/blob/main/images/favoritiesPage.p
   - High Order Functions
   - Memory Management
   - Clean Code 
+  - Unit Test
   
 #### UIKit
   - CollectionView
