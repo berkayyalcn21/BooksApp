@@ -6,7 +6,7 @@
 
 #### Description
 - This app is a books app
-- with this application;
+  - with this application;
   - can search a book
   - can look books details
   - can add your favorite books to your favourites.
