@@ -15,6 +15,7 @@ class HomeVC: UIViewController {
     private let collectionViewKey = "HomeCollectionViewCell"
     private var booksList: [BooksList] = []
     private var paginationTotal = 20
+    let refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,10 +31,17 @@ class HomeVC: UIViewController {
         homeCollectionView.reloadData()
     }
 
-    func setupUI() {
+    private func setupUI() {
         homeCollectionView.delegate = self
         homeCollectionView.dataSource = self
         registerCollectionView()
+        homeCollectionView.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(refreshCollection), for: .valueChanged)
+    }
+    
+    @objc private func refreshCollection() {
+        homeCollectionView.reloadData()
+        self.refreshControl.endRefreshing()
     }
     
     // CollectionView register
