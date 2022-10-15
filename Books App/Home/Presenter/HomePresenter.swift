@@ -7,6 +7,7 @@
 
 import Foundation
 
+// Home page filter button action
 enum FilterButton {
     case All
     case NewToOld
@@ -20,18 +21,22 @@ class HomePresenter: ViewToPresenterHomeProtocol {
     var homeView: PresenterToViewHomeProtocol?
     var filterButton: FilterButton?
     
+    // Fetch data books
     func loadBooks(pagination: Int) {
         homeInteractor?.loadAllBooks(pagination: pagination)
     }
     
+    // Add to core data
     func addFavoriteBook(_ id: String, _ title: String, _ image: String, _ authorName: String, _ bookDate: String) {
         homeInteractor?.addFavoriteMyBook(id, title, image, authorName, bookDate)
     }
     
+    // Delete from core data
     func deleteFavoriteBook(_ id: String) {
         homeInteractor?.deleteFavoriteMyBook(id)
     }
     
+    // Fetch data from core data
     func fetchCoreDataList() -> [BooksEntity] {
         return homeInteractor?.fetchCoreDataBooks() ?? []
     }
@@ -39,6 +44,7 @@ class HomePresenter: ViewToPresenterHomeProtocol {
 
 extension HomePresenter: InteractorToPresenterHomeProtocol {
     
+    // Transform data string to date
     func stringToDate(_ string: String) -> Date {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
@@ -48,6 +54,7 @@ extension HomePresenter: InteractorToPresenterHomeProtocol {
         return date ?? .now
     }
     
+    // Data transform for home page filter
     func makeTransformToFavorites(_ booksEntity: [BooksEntity]) -> [BooksList] {
         let booksList: [BooksList] = booksEntity.map {
             let date = self.stringToDate($0.bookDate ?? "")
@@ -55,6 +62,7 @@ extension HomePresenter: InteractorToPresenterHomeProtocol {
         return booksList
     }
     
+    // Data transfer to home view
     func dataTransferToPresenter(with booksList: [BooksList]) {
         switch filterButton {
         case .All:

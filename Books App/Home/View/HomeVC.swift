@@ -19,7 +19,7 @@ class HomeVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "line.3.horizontal.decrease.circle"), style: .done, target: self, action: #selector(addTapped))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "line.3.horizontal.decrease.circle"), style: .done, target: self, action: #selector(filterButtonTapped))
         self.title = "Anasayfa"
         setupUI()
         HomeRouter.createModule(ref: self)
@@ -36,11 +36,12 @@ class HomeVC: UIViewController {
         registerCollectionView()
     }
     
+    // CollectionView register
     func registerCollectionView() {
         homeCollectionView.register(.init(nibName: collectionViewKey, bundle: nil), forCellWithReuseIdentifier: collectionViewKey)
     }
     
-    @objc func addTapped() {
+    @objc func filterButtonTapped() {
         actionSheetForFilter()
     }
     
@@ -49,6 +50,7 @@ class HomeVC: UIViewController {
         homePresenterObject?.loadBooks(pagination: paginationTotal)
     }
     
+    // Filter home page - actionSheet
     func actionSheetForFilter() {
         let actionSheet = UIAlertController(title: "Sırala", message: nil, preferredStyle: .actionSheet)
         actionSheet.addAction(UIAlertAction(title: "Tümü", style: .default, handler: { [weak self] _ in
@@ -71,6 +73,7 @@ class HomeVC: UIViewController {
         present(actionSheet, animated: true)
     }
     
+    // Add core data func - star button action
     func starButtonTapped(_ cellModel: BooksList) {
         var check: Bool = false
         if let booksList = homePresenterObject?.fetchCoreDataList() {
@@ -116,6 +119,7 @@ extension HomeVC: UICollectionViewDataSource {
         let cell = homeCollectionView.dequeueReusableCell(withReuseIdentifier: collectionViewKey, for: indexPath) as! HomeCollectionViewCell
         cell.layer.cornerRadius = 10
         
+        // Data transform for cell image
         DispatchQueue.global().async { [weak self] in
             let data = try! Data(contentsOf: URL(string: cellModel.artworkUrl100!)!)
             DispatchQueue.main.async { [weak self] in
@@ -125,6 +129,7 @@ extension HomeVC: UICollectionViewDataSource {
             }
         }
         
+        // Star button color check
         cell.bookStarButton.tintColor = .gray
         if let booksList = homePresenterObject?.fetchCoreDataList() {
             for i in booksList {
@@ -134,6 +139,7 @@ extension HomeVC: UICollectionViewDataSource {
             }
         }
         
+        // Star button tapped
         cell.row = indexPath.row
         cell.onTappedButton = { [weak self] index in
             guard let self = self else { return }
@@ -144,6 +150,7 @@ extension HomeVC: UICollectionViewDataSource {
         return cell
     }
     
+    // Pagination settings
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if indexPath.row + 1 == paginationTotal {
             paginationTotal += 20
@@ -152,6 +159,7 @@ extension HomeVC: UICollectionViewDataSource {
     }
 }
 
+// CollectionView size settings
 extension HomeVC: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
