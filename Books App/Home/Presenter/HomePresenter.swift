@@ -28,8 +28,8 @@ class HomePresenter: ViewToPresenterHomeProtocol {
     }
     
     // Add to core data
-    func addFavoriteBook(_ id: String, _ title: String, _ image: String, _ authorName: String, _ bookDate: String) {
-        homeInteractor?.addFavoriteMyBook(id, title, image, authorName, bookDate)
+    func addFavoriteBook(bookEntity: BookEntity) {
+        homeInteractor?.addFavoriteMyBook(bookEntity: bookEntity)
     }
     
     // Delete from core data

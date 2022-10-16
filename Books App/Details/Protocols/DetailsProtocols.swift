@@ -10,14 +10,14 @@ import Foundation
 protocol ViewToPresenterDetailsProtocol {
     var detailsInteractor: PresenterToInteractorDetailsProtocol? { get set }
     
-    func addFavoriteBook(_ id: String, _ title: String, _ image: String, _ authorName: String, _ bookDate: String)
+    func addFavoriteBook(bookEntity: BookEntity)
     func deleteFavoriteBook(_ id: String)
     func fetchCoreDataList() -> [BooksEntity]
 }
 
 protocol PresenterToInteractorDetailsProtocol {
     
-    func addFavoriteMyBook(_ id: String, _ title: String, _ image: String, _ authorName: String, _ bookDate: String)
+    func addFavoriteMyBook(bookEntity: BookEntity)
     func deleteFavoriteMyBook(_ id: String)
     func fetchCoreDataBooks() -> [BooksEntity]
 }

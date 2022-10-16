@@ -70,7 +70,8 @@ class DetailsVC: UIViewController {
                 }
             }
             if !check {
-                detailsPresenterObject?.addFavoriteBook(result.id!, result.bookTitle!, result.imageView!, result.authorName!, result.bookDate!)
+                let book = DataTransform.shared.transformDetailsEntityToBookEntity(detailsEntity: result)
+                detailsPresenterObject?.addFavoriteBook(bookEntity: book)
             }
         }
         checkStarButton()

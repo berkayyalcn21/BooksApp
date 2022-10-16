@@ -33,9 +33,9 @@ class HomeInteractor: PresenterToInteracterHomeProtocol {
     }
     
     // Add to core data
-    func addFavoriteMyBook(_ id: String, _ title: String, _ image: String, _ authorName: String, _ bookDate: String) {
+    func addFavoriteMyBook(bookEntity: BookEntity) {
         
-        CoreDataManager.shared.addFavoriteMyBook(id, title, image, authorName, bookDate)
+        CoreDataManager.shared.addFavoriteMyBook(bookEntity: bookEntity)
     }
     
     // Delete from core data
