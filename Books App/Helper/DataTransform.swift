@@ -39,5 +39,23 @@ class DataTransform {
         return toDetails.map { .init(id: $0.id!, imageView: $0.bookImage!, bookTitle: $0.title!, authorName: $0.authorName!, bookDate: $0.bookDate!) }
     }
     
+    // Transform data string to date
+    func transformStringToDate(_ string: String) -> Date {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+        let date = dateFormatter.date(from: string)
+        dateFormatter.string(from: date!)
+        return date ?? .now
+    }
+    
+    // Data transform for home page filter favorites
+    func transformBookEntityToBookList(_ booksEntity: [BooksEntity]) -> [BooksList] {
+        let booksList: [BooksList] = booksEntity.map {
+            let date = self.transformStringToDate($0.bookDate ?? "")
+            return BooksList(artistName: $0.authorName, id: $0.id, name: $0.title, releaseDate: date, artworkUrl100: $0.bookImage) }
+        return booksList
+    }
+    
 }
 
