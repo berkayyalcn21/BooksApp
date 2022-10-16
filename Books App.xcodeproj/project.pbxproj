@@ -23,6 +23,7 @@
 		F05D8D6D28F699AB00EB491B /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05D8D6C28F699AB00EB491B /* HomeRouter.swift */; };
 		F05D8D7028F699ED00EB491B /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05D8D6E28F699ED00EB491B /* HomeCollectionViewCell.swift */; };
 		F05D8D7128F699ED00EB491B /* HomeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F05D8D6F28F699ED00EB491B /* HomeCollectionViewCell.xib */; };
+		F072952728FBF2E00072F395 /* BookEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F072952628FBF2E00072F395 /* BookEntity.swift */; };
 		F0754FA428FB4B9D0042A65F /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0754FA328FB4B9D0042A65F /* Networking.swift */; };
 		F07980B328F6B7DE00440FA2 /* HomeProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07980B228F6B7DE00440FA2 /* HomeProtocols.swift */; };
 		F0D250FB28F700DF0049CF73 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D250FA28F700DF0049CF73 /* SearchVC.swift */; };
@@ -82,6 +83,7 @@
 		F05D8D6C28F699AB00EB491B /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
 		F05D8D6E28F699ED00EB491B /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		F05D8D6F28F699ED00EB491B /* HomeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeCollectionViewCell.xib; sourceTree = "<group>"; };
+		F072952628FBF2E00072F395 /* BookEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookEntity.swift; sourceTree = "<group>"; };
 		F0754F9A28FB4B810042A65F /* Books AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Books AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0754FA328FB4B9D0042A65F /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		F07980B228F6B7DE00440FA2 /* HomeProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeProtocols.swift; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 			children = (
 				F05D8D6A28F699A100EB491B /* HomeEntity.swift */,
 				F038B2CB28F94FB000A9A695 /* BooksList.swift */,
+				F072952628FBF2E00072F395 /* BookEntity.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -593,6 +596,7 @@
 				F0D2512C28F75F460049CF73 /* FavoritesPresenter.swift in Sources */,
 				F05D8D7028F699ED00EB491B /* HomeCollectionViewCell.swift in Sources */,
 				F0D2511F28F723FF0049CF73 /* BookRequestModel.swift in Sources */,
+				F072952728FBF2E00072F395 /* BookEntity.swift in Sources */,
 				F0F3BF4C28FB4EE500AB3AEE /* TestNetworkingRequestModel.swift in Sources */,
 				F0D2511228F711760049CF73 /* DetailsPresenter.swift in Sources */,
 				F0D2513128F761210049CF73 /* CoreDataStack.swift in Sources */,

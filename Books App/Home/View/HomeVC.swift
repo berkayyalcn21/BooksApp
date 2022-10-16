@@ -92,15 +92,9 @@ class HomeVC: UIViewController {
                     check = true
                 }
             }
-            if !check && cellModel.id != nil && cellModel.name != nil && cellModel.artworkUrl100 != nil && cellModel.artistName != nil && cellModel.releaseDate != nil {
-                let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "yyyy-MM-dd"
-                let stringDate = dateFormatter.string(from: cellModel.releaseDate ?? .now)
-                homePresenterObject?.addFavoriteBook(cellModel.id!,
-                                                     cellModel.name!,
-                                                     cellModel.artworkUrl100!,
-                                                     cellModel.artistName!,
-                                                     stringDate)
+            if !check {
+                let book = DataTransform.shared.transformBookListToBookEntity(bookList: cellModel)
+                homePresenterObject?.addFavoriteBook(bookEntity: book)
             }
         }
     }

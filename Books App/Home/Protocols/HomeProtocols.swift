@@ -13,7 +13,7 @@ protocol ViewToPresenterHomeProtocol {
     var filterButton: FilterButton? { get set }
     
     func loadBooks(pagination: Int)
-    func addFavoriteBook(_ id: String, _ title: String, _ image: String, _ authorName: String, _ bookDate: String)
+    func addFavoriteBook(bookEntity: BookEntity)
     func deleteFavoriteBook(_ id: String)
     func fetchCoreDataList() -> [BooksEntity]
     func filteredList()
@@ -23,7 +23,7 @@ protocol PresenterToInteracterHomeProtocol {
     var homePresenter: InteractorToPresenterHomeProtocol? { get set }
     
     func loadAllBooks(pagination: Int)
-    func addFavoriteMyBook(_ id: String, _ title: String, _ image: String, _ authorName: String, _ bookDate: String)
+    func addFavoriteMyBook(bookEntity: BookEntity)
     func deleteFavoriteMyBook(_ id: String)
     func fetchCoreDataBooks() -> [BooksEntity]
 }

@@ -57,5 +57,17 @@ class DataTransform {
         return booksList
     }
     
+    func transformBookListToBookEntity(bookList: BooksList) -> BookEntity {
+
+        let stringDate = dateToString(bookList.releaseDate ?? .now)
+        let book: BookEntity = .init(id: bookList.id!, title: bookList.name!, bookImage: bookList.artworkUrl100!, bookDate: stringDate, authorName: bookList.artistName!)
+        return book
+    }
+    
+    func transformDetailsEntityToBookEntity(detailsEntity: DetailsEntity) -> BookEntity {
+        
+        return .init(id: detailsEntity.id!, title: detailsEntity.bookTitle!, bookImage: detailsEntity.imageView!, bookDate: detailsEntity.bookDate!, authorName: detailsEntity.authorName!)
+    }
+    
 }
 
