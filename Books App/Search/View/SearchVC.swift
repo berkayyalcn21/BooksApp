@@ -160,6 +160,7 @@ extension SearchVC: PresenterToViewSearchProtocol {
     }
 }
 
+// For hide keyboard
 extension UIViewController {
      func setupHideKeyboardWhenTapOutside() {
          self.view.addGestureRecognizer(self.endEditingRecognizer())
