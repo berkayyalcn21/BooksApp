@@ -45,24 +45,6 @@ class HomePresenter: ViewToPresenterHomeProtocol {
 
 extension HomePresenter: InteractorToPresenterHomeProtocol {
     
-    // Transform data string to date
-    func stringToDate(_ string: String) -> Date {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
-        let date = dateFormatter.date(from: string)
-        dateFormatter.string(from: date ?? .now)
-        return date ?? .now
-    }
-    
-    // Data transform for home page filter
-    func makeTransformToFavorites(_ booksEntity: [BooksEntity]) -> [BooksList] {
-        let booksList: [BooksList] = booksEntity.map {
-            let date = self.stringToDate($0.bookDate ?? "")
-            return BooksList(artistName: $0.authorName, id: $0.id, name: $0.title, releaseDate: date, artworkUrl100: $0.bookImage) }
-        return booksList
-    }
-    
     func filteredList() {
         switch filterButton {
         case .All:
@@ -76,7 +58,7 @@ extension HomePresenter: InteractorToPresenterHomeProtocol {
         case .Favorites:
             let favoritesList = homeInteractor?.fetchCoreDataBooks()
             if let favoritesList {
-                let filteredList = makeTransformToFavorites(favoritesList)
+                let filteredList = DataTransform.shared.transformBookEntityToBookList(favoritesList)
                 self.homeView?.updateData(with: filteredList)
             }
         case .none:
