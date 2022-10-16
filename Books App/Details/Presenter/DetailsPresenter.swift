@@ -13,8 +13,8 @@ class DetailsPresenter: ViewToPresenterDetailsProtocol {
     var detailsInteractor: PresenterToInteractorDetailsProtocol?
     
     // Add to core data
-    func addFavoriteBook(_ id: String, _ title: String, _ image: String, _ authorName: String, _ bookDate: String) {
-        detailsInteractor?.addFavoriteMyBook(id, title, image, authorName, bookDate)
+    func addFavoriteBook(bookEntity: BookEntity) {
+        detailsInteractor?.addFavoriteMyBook(bookEntity: bookEntity)
     }
     
     // Delete from core data
