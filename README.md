@@ -1,6 +1,5 @@
 # Books App
 
-### Books App
 
 ![Simulator](https://github.com/berkayyalcn21/BooksApp/blob/main/images/app%C4%B1con.png)
 
